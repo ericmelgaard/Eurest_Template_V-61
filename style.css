@@ -5,32 +5,55 @@
 
 html {
     background: white;
-    overflow: visible;
+    overflow: auto;
 }
 
-body,
-.background,
-.asset-wrapper {
+body {
+    margin: 0;
+    padding: 0;
+    background: #314959;
+    overflow: auto;
+}
+
+.background {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.asset-wrapper {
+    position: relative;
     background: #314959;
     margin: 0;
     padding: 0;
-    width: 1080px;
-    height: 1920px;
-    overflow: hidden;
+    max-width: 1080px;
+    min-height: 100vh;
+    overflow: visible;
+    margin: 0 auto;
 }
 
 /* Welcome Screen Styles */
 .home {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1080px;
-    height: 1920px;
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    min-height: 100vh;
     background: #314959;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 80px;
 }
 
 .welcome-header {
@@ -41,7 +64,8 @@ body,
 }
 
 .welcome-header img {
-    max-width: 900px;
+    max-width: 90%;
+    width: 900px;
     height: auto;
 }
 
@@ -51,6 +75,16 @@ body,
     gap: 40px;
     padding: 0 100px;
     margin-bottom: 60px;
+    width: 100%;
+    max-width: 1080px;
+}
+
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+        padding: 0 40px;
+        gap: 30px;
+    }
 }
 
 .feature-card {
@@ -115,42 +149,43 @@ body,
 
 /* Weekly Menu Page Styles */
 #weekly_menu_page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1080px;
-    height: 1920px;
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    min-height: 100vh;
     display: none;
 }
 
 #weekly_menu_page .logo-wrapper {
-    position: absolute;
+    position: relative;
     background-color: white;
-    top: 50px;
-    left: 360px;
-    width: 645px;
-    height: 1800px;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 645px;
+    min-height: 1800px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border: #CE3334 9px solid;
+    z-index: 1;
 }
 
 .logo-wrapper {
-    position: absolute;
+    position: relative;
     background-color: white;
-    top: 50px;
-    left: 360px;
-    width: 645px;
-    height: 1800px;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 645px;
+    min-height: 1800px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border: #CE3334 9px solid;
+    z-index: 1;
 }
 
 .header-wrapper {
@@ -174,12 +209,12 @@ body,
 }
 
 .page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1080px;
-    height: 1920px;
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    min-height: 100vh;
     display: none;
+    padding-bottom: 160px;
 }
 
 .logo-wrapper IMG {
@@ -187,11 +222,13 @@ body,
 }
 
 .goHome {
-    position: absolute;
-    top: 1770px;
-    width: 1070px;
-    height: 80px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: auto;
+    height: auto;
     text-align: right;
+    z-index: 1000;
 }
 
 @keyframes bounceIn {
@@ -246,14 +283,15 @@ body,
 
 
 #bfast_page .feature-wrapper {
-    position: absolute;
-    top: 450px;
-    left: 120px;
-    width: 845px;
-    height: 525px;
+    position: relative;
+    margin: 450px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 525px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 1;
 }
 
 #bfast_page .section-wrapper {
@@ -262,7 +300,8 @@ body,
 }
 
 #bfast_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -270,14 +309,15 @@ body,
 
 /* Taco Cantina Styles */
 #tacocantina_page .feature-wrapper {
-    position: absolute;
-    top: 425px;
-    left: 120px;
-    width: 845px;
-    height: 350px;
+    position: relative;
+    margin: 425px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 1;
 }
 
 #tacocantina_page .section-wrapper {
@@ -285,7 +325,8 @@ body,
 }
 
 #tacocantina_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -293,25 +334,29 @@ body,
 
 /* Roost Styles */
 #roost_page .section-wrapper {
-    position: absolute;
-    top: 325px;
-    left: 120px;
-    height: 1200px;
+    position: relative;
+    margin: 325px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    overflow: hidden;
+    overflow: visible;
+    z-index: 1;
 }
 
 #roost_page .feature-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 #roost_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -323,14 +368,16 @@ body,
 }
 
 #roost_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 #roost_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -352,25 +399,27 @@ body,
 
 /* piccolaitalia styles */
 #piccolaitalia_page .feature-wrapper {
-    position: absolute;
-    top: 425px;
-    left: 120px;
-    width: 845px;
-    height: 1050px;
+    position: relative;
+    margin: 425px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 1050px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 1;
 }
 
 #piccolaitalia_page .sides-wrapper {
-    position: absolute;
-    top: 725px;
-    left: 120px;
-    width: 845px;
-    height: 350px;
+    position: relative;
+    margin: 50px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 1;
 }
 
 
@@ -379,7 +428,8 @@ body,
 }
 
 #piccolaitalia_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -387,19 +437,21 @@ body,
 
 /* bigcitybbq styles  */
 #bigcitybbq_page .section-wrapper {
-    position: absolute;
-    top: 350px;
-    left: 120px;
-    height: 1275px;
-    ;
+    position: relative;
+    margin: 350px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 1275px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    z-index: 1;
 }
 
 
 #bigcitybbq_page .feature-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -407,7 +459,8 @@ body,
 }
 
 #bigcitybbq_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -420,7 +473,8 @@ body,
 }
 
 #bigcitybbq_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -428,14 +482,16 @@ body,
 }
 
 #bigcitybbq_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 #bigcitybbq_page .Protein-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -453,24 +509,28 @@ body,
 /* inspired kitchen styles */
 
 #inspiredkitchen_page .section-wrapper {
-    position: absolute;
-    top: 450px;
-    left: 120px;
-    height: 1200px;
+    position: relative;
+    margin: 450px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    z-index: 1;
 }
 
 #inspiredkitchen_page .feature-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
 #inspiredkitchen_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -482,14 +542,16 @@ body,
 }
 
 #inspiredkitchen_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 #inspiredkitchen_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -498,17 +560,20 @@ body,
 /* flame styles */
 
 #flame_page .section-wrapper {
-    position: absolute;
-    top: 350px;
-    left: 120px;
-    height: 1075px;
+    position: relative;
+    margin: 350px auto 0;
+    width: 90%;
+    max-width: 845px;
+    min-height: 1075px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    z-index: 1;
 }
 
 #flame_page .feature-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -518,7 +583,8 @@ body,
 }
 
 #flame_page .sides-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -533,7 +599,8 @@ body,
 }
 
 #flame_page .items-wrapper {
-    width: 845px;
+    width: 100%;
+    max-width: 845px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -544,23 +611,25 @@ body,
 /* butcher and baker styles */
 
 #butcherbaker_page .feature-wrapper {
-    position: absolute;
-    top: 500px;
-    left: 175px;
-    width: 690px;
-    height: 350px;
+    position: relative;
+    margin: 500px auto 0;
+    width: 85%;
+    max-width: 690px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: white;
     border-radius: 35px;
     padding: 20px;
-    padding-left: 60px;;
+    padding-left: 60px;
+    z-index: 1;
 }
 
 #butcherbaker_page .sides-wrapper {
-    width: 845px;
-    height: 350px;
+    width: 100%;
+    max-width: 845px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -583,10 +652,10 @@ body,
 }
 
 #butcherbaker_page .soups-wrapper {
-    position: absolute;
-    top: 1350px;
-    left: 175px;
-    width: 300px;
+    position: relative;
+    margin: 350px auto 0;
+    width: 85%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -594,6 +663,7 @@ body,
     border-radius: 35px;
     padding: 20px;
     padding-top: 15px;
+    z-index: 1;
 }
 
 #butcherbaker_page .soups-wrapper .name {
@@ -709,4 +779,149 @@ body,
 
 .icon-wrapper img {
     margin-left: 5px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1080px) {
+    .home,
+    .page,
+    .asset-wrapper {
+        max-width: 100%;
+    }
+
+    .welcome-header {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .logo-wrapper,
+    #weekly_menu_page .logo-wrapper {
+        width: 95%;
+        min-height: auto;
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-header img {
+        max-width: 95%;
+    }
+
+    .cards-grid {
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .feature-card {
+        min-height: 250px;
+        padding: 40px 20px;
+    }
+
+    .card-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    .card-icon img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .card-label {
+        font-size: 32px;
+        line-height: 36px;
+    }
+
+    .eurest-logo img {
+        max-width: 90%;
+    }
+
+    .header {
+        font-size: 48px;
+    }
+
+    .sub-header {
+        font-size: 36px;
+    }
+
+    .name {
+        font-size: 42px;
+        line-height: 40px;
+    }
+
+    .desc {
+        font-size: 28px;
+        line-height: 26px;
+    }
+
+    .price {
+        font-size: 32px;
+    }
+
+    .goHome img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo-wrapper IMG {
+        max-width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-header {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .cards-grid {
+        padding: 0 15px;
+        gap: 15px;
+    }
+
+    .feature-card {
+        min-height: 200px;
+        padding: 30px 15px;
+        border-radius: 20px;
+    }
+
+    .card-label {
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    .header {
+        font-size: 36px;
+    }
+
+    .sub-header {
+        font-size: 28px;
+    }
+
+    .name {
+        font-size: 36px;
+        line-height: 34px;
+    }
+
+    .desc {
+        font-size: 24px;
+        line-height: 22px;
+        padding: 5px;
+    }
+
+    .price {
+        font-size: 28px;
+    }
+
+    .goHome {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .goHome img {
+        width: 80px;
+        height: 80px;
+    }
 }   

@@ -10,11 +10,11 @@
 
 /*basic document styles*/
 html {
-    overflow: visible;
+    overflow: auto;
 }
 
 body {
-    overflow: hidden;
+    overflow: auto;
 }
 
 /*scaling support*/
