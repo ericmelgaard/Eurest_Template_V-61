@@ -48,102 +48,102 @@ body {
     position: relative;
     width: 100%;
     max-width: 1080px;
-    min-height: 100vh;
+    min-height: 1920px;
     background: #314959;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 
 .welcome-header {
     width: 100%;
     text-align: center;
-    margin-top: 80px;
-    margin-bottom: 60px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 30px 0 20px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
 }
 
 .welcome-header img {
     max-width: 90%;
-    width: 900px;
+    width: auto;
     height: auto;
+    max-height: 120px;
 }
 
 .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    padding: 0 100px;
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 30px;
     width: 100%;
     max-width: 1080px;
 }
 
-@media (max-width: 768px) {
-    .cards-grid {
-        grid-template-columns: 1fr;
-        padding: 0 40px;
-        gap: 30px;
-    }
-}
-
 .feature-card {
-    background-color: #6B7A84;
-    border-radius: 30px;
-    padding: 50px 30px;
+    background-color: #7B8A94;
+    border-radius: 0;
+    border-bottom: 3px solid #5B6A74;
+    padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    min-height: 320px;
+    transition: background-color 0.2s ease;
+    min-height: 120px;
+    height: auto;
 }
 
 .feature-card:hover {
-    transform: scale(1.05);
-    background-color: #7B8A94;
+    background-color: #8B9AA4;
 }
 
 .feature-card:active {
-    transform: scale(0.98);
-    background-color: #5B6A74;
+    background-color: #6B7A84;
 }
 
 .card-icon {
-    width: 140px;
-    height: 140px;
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
     background-color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin: 15px 20px;
 }
 
 .card-icon img {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
 }
 
 .card-label {
     color: white;
     font-family: "BarlowSemiCondensed-Regular", sans-serif;
-    font-size: 42px;
-    line-height: 46px;
-    text-align: center;
-    font-weight: 500;
+    font-size: 34px;
+    line-height: 38px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-right: 20px;
+    flex: 1;
 }
 
 .eurest-logo {
     margin-top: auto;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
 .eurest-logo img {
-    max-width: 600px;
+    max-width: 400px;
     height: auto;
 }
 
@@ -789,11 +789,6 @@ body {
         max-width: 100%;
     }
 
-    .welcome-header {
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-
     .logo-wrapper,
     #weekly_menu_page .logo-wrapper {
         width: 95%;
@@ -803,38 +798,47 @@ body {
 }
 
 @media (max-width: 768px) {
-    .welcome-header img {
-        max-width: 95%;
+    .home {
+        min-height: 100vh;
     }
 
-    .cards-grid {
-        padding: 0 20px;
-        gap: 20px;
+    .welcome-header {
+        padding: 20px 0 10px;
+    }
+
+    .welcome-header img {
+        max-width: 85%;
+        max-height: 80px;
     }
 
     .feature-card {
-        min-height: 250px;
-        padding: 40px 20px;
+        min-height: 100px;
     }
 
     .card-icon {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 20px;
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        margin: 10px 15px;
     }
 
     .card-icon img {
-        width: 70px;
-        height: 70px;
+        width: 45px;
+        height: 45px;
     }
 
     .card-label {
-        font-size: 32px;
-        line-height: 36px;
+        font-size: 28px;
+        line-height: 32px;
+        padding-right: 15px;
+    }
+
+    .eurest-logo {
+        margin-bottom: 30px;
     }
 
     .eurest-logo img {
-        max-width: 90%;
+        max-width: 300px;
     }
 
     .header {
@@ -872,24 +876,41 @@ body {
 
 @media (max-width: 480px) {
     .welcome-header {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        padding: 15px 0 10px;
     }
 
-    .cards-grid {
-        padding: 0 15px;
-        gap: 15px;
+    .welcome-header img {
+        max-height: 60px;
     }
 
     .feature-card {
-        min-height: 200px;
-        padding: 30px 15px;
-        border-radius: 20px;
+        min-height: 85px;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        margin: 10px 12px;
+    }
+
+    .card-icon img {
+        width: 40px;
+        height: 40px;
     }
 
     .card-label {
-        font-size: 28px;
-        line-height: 32px;
+        font-size: 22px;
+        line-height: 26px;
+        padding-right: 12px;
+    }
+
+    .eurest-logo {
+        margin-bottom: 20px;
+    }
+
+    .eurest-logo img {
+        max-width: 200px;
     }
 
     .header {
