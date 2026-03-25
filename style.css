@@ -1,0 +1,594 @@
+@font-face {
+    font-family: "BarlowSemiCondensed-Regular";
+    src: url("fonts/BarlowSemiCondensed-Regular.woff") format("woff");
+}
+
+html {
+    background: white;
+    overflow: visible;
+}
+
+body,
+.background,
+.asset-wrapper {
+    position: absolute;
+    background: #314959;
+    margin: 0;
+    padding: 0;
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+}
+
+.logo-wrapper {
+    position: absolute;
+    background-color: white;
+    top: 50px;
+    left: 360px;
+    width: 645px;
+    height: 1800px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: #CE3334 9px solid;
+}
+
+.header-wrapper {
+    font-family: "BarlowSemiCondensed-Regular";
+    letter-spacing: -.4px;
+    text-align: center;
+}
+
+.header {
+    font-size: 72px;
+    ;
+}
+
+.sub-header {
+    font-size: 49px;
+}
+
+.information-text img {
+    padding: 5px 10px 0px 0px;
+    ;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1080px;
+    height: 1920px;
+    display: none;
+}
+
+.logo-wrapper IMG {
+    cursor: pointer;
+}
+
+.goHome {
+    position: absolute;
+    top: 1770px;
+    width: 1070px;
+    height: 80px;
+    text-align: right;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.goHome img {
+    width: 140px;
+    height: 140px;
+    cursor: pointer;
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.premium .goHome {
+    position: absolute;
+    top: 1800px;
+    left: 80px;
+    width: 920px;
+    height: 80px;
+}
+
+.password {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    color: white;
+    position: absolute;
+    top: 1675px;
+    left: 200px
+}
+
+/* pages */
+
+/* breakfast styles */
+
+.section-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "BarlowSemiCondensed-Regular";
+}
+
+
+#bfast_page .feature-wrapper {
+    position: absolute;
+    top: 450px;
+    left: 120px;
+    width: 845px;
+    height: 525px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#bfast_page .section-wrapper {
+    background-color: white;
+    text-align: center;
+}
+
+#bfast_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Taco Cantina Styles */
+#tacocantina_page .feature-wrapper {
+    position: absolute;
+    top: 425px;
+    left: 120px;
+    width: 845px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#tacocantina_page .section-wrapper {
+    text-align: center;
+}
+
+#tacocantina_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Roost Styles */
+#roost_page .section-wrapper {
+    position: absolute;
+    top: 325px;
+    left: 120px;
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+#roost_page .feature-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#roost_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#roost_page .section-wrapper {
+    text-align: center;
+}
+
+#roost_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#roost_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#roost_page .menu-item-wrapper {
+    text-align: left;
+}
+
+#roost_page .desc {
+    text-align: left;
+}
+
+#roost_page .price-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+/* piccolaitalia styles */
+#piccolaitalia_page .feature-wrapper {
+    position: absolute;
+    top: 425px;
+    left: 120px;
+    width: 845px;
+    height: 1050px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#piccolaitalia_page .sides-wrapper {
+    position: absolute;
+    top: 725px;
+    left: 120px;
+    width: 845px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#piccolaitalia_page .section-wrapper {
+    text-align: center;
+}
+
+#piccolaitalia_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* bigcitybbq styles  */
+#bigcitybbq_page .section-wrapper {
+    position: absolute;
+    top: 350px;
+    left: 120px;
+    height: 1275px;
+    ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+#bigcitybbq_page .feature-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+#bigcitybbq_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+
+#bigcitybbq_page .section-wrapper {
+    text-align: center;
+}
+
+#bigcitybbq_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+}
+
+#bigcitybbq_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#bigcitybbq_page .Protein-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#bigcitybbq_page .name,
+#bigcitybbq_page .desc,
+#bigcitybbq_page .price,
+#bigcitybbq_page .calories,
+#bigcitybbq_page .portions {
+    color: white;
+}
+
+
+/* inspired kitchen styles */
+
+#inspiredkitchen_page .section-wrapper {
+    position: absolute;
+    top: 450px;
+    left: 120px;
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#inspiredkitchen_page .feature-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#inspiredkitchen_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+#inspiredkitchen_page .section-wrapper {
+    text-align: center;
+}
+
+#inspiredkitchen_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#inspiredkitchen_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* flame styles */
+
+#flame_page .section-wrapper {
+    position: absolute;
+    top: 350px;
+    left: 120px;
+    height: 1075px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#flame_page .feature-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+#flame_page .sides-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+
+#flame_page .section-wrapper {
+    text-align: center;
+}
+
+#flame_page .items-wrapper {
+    width: 845px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+/* butcher and baker styles */
+
+#butcherbaker_page .feature-wrapper {
+    position: absolute;
+    top: 500px;
+    left: 175px;
+    width: 690px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 35px;
+    padding: 20px;
+    padding-left: 60px;;
+}
+
+#butcherbaker_page .sides-wrapper {
+    width: 845px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+#butcherbaker_page .desc {
+    text-align: left;
+    padding: 0px;;
+}
+
+#butcherbaker_page .name{
+    text-align: left;
+    padding-bottom: 20px;;
+}
+
+#butcherbaker_page .feature-wrapper .items-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#butcherbaker_page .soups-wrapper {
+    position: absolute;
+    top: 1350px;
+    left: 175px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: white;
+    border-radius: 35px;
+    padding: 20px;
+    padding-top: 15px;
+}
+
+#butcherbaker_page .soups-wrapper .name {
+    font-size: 36px;
+    line-height: 32px;
+    font-weight: 500;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: lowercase;
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+
+#butcherbaker_page .header {
+    font-size: 48px;
+    font-weight: 500;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    justify-content: flex-start;
+}
+
+/* menuItems */
+
+.menu-item-wrapper {
+    margin-bottom: 10px;
+}
+
+.inline .item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.inline .desc {
+    text-align: left;
+}
+
+.name {
+    display: inline-block;
+    font-family: "BarlowSemiCondensed-Regular";
+    font-size: 56px;
+    line-height: 50px;
+    text-align: left;
+    color: #282828;
+}
+
+.header {
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price {
+    display: inline-block;
+    font-family: "BarlowSemiCondensed-Regular";
+    font-size: 36px;
+    text-align: right;
+    color: #282828;
+    margin-left: 20px;
+}
+
+.calories {
+    display: inline-block;
+    font-family: "BarlowSemiCondensed-Regular";
+    font-size: 36px;
+    text-align: right;
+    color: #282828;
+    margin-left: 5px;
+}
+
+.portions {
+    display: inline-block;
+    font-family: "BarlowSemiCondensed-Regular";
+    font-size: 24px;
+    text-align: right;
+    color: #282828;
+    margin-left: 5px;
+}
+
+.desc {
+    font-family: "BarlowSemiCondensed-Regular";
+    font-size: 32px;
+    line-height: 30px;
+    text-align: left;
+    color: #282828;
+    text-align: center;
+    padding: 10px;
+    ;
+}
+
+.price-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    min-width: 240px;
+}
+
+.nutrition-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.menu-item-price-name-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+/* actions */
+
+.hide {
+    display: none;
+}
+
+.icon-wrapper img {
+    margin-left: 5px;
+}   
