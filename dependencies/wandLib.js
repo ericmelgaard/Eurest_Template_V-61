@@ -228,7 +228,7 @@ function animateObserver() {
 var scale = 1; // Initial scale
 var isScaled = true;
 $(document).ready(function () {
-    return;
+    // return;
     var outer = $("body");
     var wrapper = $("html");
     var maxWidth = $("body").width();
