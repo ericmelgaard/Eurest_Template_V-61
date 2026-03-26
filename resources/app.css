@@ -339,7 +339,8 @@ p {
 
 /* Container for the options menu */
 .options-container {
-    position: fixed;
+    position: absolute;
+    top: 0px;
     z-index: 50;
     font-family: system-ui, -apple-system, sans-serif;
     opacity: 1;

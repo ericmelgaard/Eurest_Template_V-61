@@ -12,10 +12,15 @@
 html {
     background: white;
     overflow: auto;
+    background-color: white;
+    background-image: url("media/texture.png");
+    background-size: 380px 380px;
+    background-repeat: repeat;
+        display: flex;
+    justify-content: center;
 }
 
 body {
-    height: 1920px;
     width: 1080px;
     margin: 0;
     padding: 0;
@@ -24,7 +29,6 @@ body {
 
 .background {
     position: absolute;
-    background-color: white;
     top: 0;
     left: 0;
     width: 100%;
@@ -48,18 +52,19 @@ body {
     height: 1920px;
     overflow: visible;
     margin: 0 auto;
+    overflow-y: hidden;
 }
 
 /* Welcome Screen Styles */
 .home {
     position: relative;
-    width: 100%;
-    max-width: 1080px;
-    min-height: 1920px;
+    width: 1080px;
+    height: 1920px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 40px;
+        overflow-y: hidden;
+        overflow-x: hidden;
 }
 
 .welcome-header {
@@ -145,8 +150,8 @@ min-width: 1080px;;
 }
 
 .eurest-logo {
-    margin-top: auto;
-    margin-bottom: 40px;
+    position: absolute;
+    bottom: 20px;
     text-align: center;
 }
 
