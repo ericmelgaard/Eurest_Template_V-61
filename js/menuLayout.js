@@ -702,7 +702,7 @@ var IMSintegration;
             </div>
         </div>`;
         MenuLayout.itemWrapper = `
-        <div class="menu-item-wrapper">
+        <div class="menu-item-wrapper" data-item-name="{{{name}}}{{comboName}}{{menuItemName}}">
                 <div class="item-wrapper">
                     <span class="name">
                         {{{name}}}{{comboName}}{{menuItemName}}<span class="icon-wrapper {{showIcons}}">{{#icons}}<img src="./{{fileName}}" class="nutrition-icon vegetarian" />{{/icons}}
@@ -717,7 +717,7 @@ var IMSintegration;
         </div>`;
 
         MenuLayout.itemWrapperInline = `
-        <div class="menu-item-wrapper inline">
+        <div class="menu-item-wrapper inline" data-item-name="{{{name}}}{{comboName}}{{menuItemName}}">
                 <div class="item-wrapper">
                     <span class="name">
                         {{{name}}}{{comboName}}{{menuItemName}}<span class="icon-wrapper {{showIcons}}">{{#icons}}<img src="./{{fileName}}" class="nutrition-icon vegetarian" />{{/icons}}
