@@ -334,21 +334,6 @@ min-width: 1080px;;
     background-clip: padding-box;
 }
 
-
-#bfast_page .section-wrapper {
-    margin-top: 80px;
-}
-
-/* Taco Cantina Styles */
-#tacocantina_page .section-wrapper {
-    margin-top: 80px;
-}
-
-/* Roost Styles */
-#roost_page .section-wrapper {
-    margin-top: 80px;
-}
-
 #roost_page .menu-item-wrapper {
     text-align: left;
 }
