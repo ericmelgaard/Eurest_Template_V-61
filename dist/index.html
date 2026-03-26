@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAND Digital Asset</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-BSX7PU3S.ico" />
+    <script type="text/javascript" src="dependencies/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="dependencies/mustache.min.js"></script>
+    <script type="text/javascript" src="dependencies/dexie.min.js"></script>
+    <script type="text/javascript" src="dependencies/math.min.js"></script>
+    <script type="text/javascript" src="dependencies/lodash.min.js"></script>
+    <script type="text/javascript" src="dependencies/wandLib.js"></script>
+    <script type="text/javascript" src="js/integration.js"></script>
+    <script type="text/javascript" src="js/brandManager.js"></script>
+    <script type="text/javascript" src="js/menuLayout.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vo149jt94m");
+    </script>
+  <link rel="stylesheet" crossorigin href="/assets/main-OLDIOFI2.css">
+</head>
+
+<body>
+    <!-- info -->
+    <div style="display: none">
+        <div id="wand">
+            <span id="apiKey" class="Text Text-25510">N2RiZDYxZTMtMjEyZS00MjE5LWFjNzktZGI3MTU4YzAwYTgy</span>
+            <!--required for Windows devices-->
+            <span id="storeKey" class="Text Text-XXXX"></span>
+        </div>
+    </div>
+    <div class="background">
+        <img src="./media/bkg_pattern_1080x1920.png" height="1920" width="1080" id="background-pattern">
+    </div>
+
+    <!--asset wrapper-->
+    <div id="target" class="asset-wrapper">
+        <!-- Welcome Screen -->
+        <div class="home" onclick="">
+            <div class="welcome-header">
+                <img src="/assets/header-DE2Ac2sh.png" alt="Welcome">
+            </div>
+            <div class="cards-grid">
+                <div class="feature-card" id="card-happening">
+                    <div class="card-icon">
+                        <img src="/assets/icon_whatshappening-DWeVK60P.png" alt="What's Happening">
+                    </div>
+                    <div class="card-label">What's Happening<br>in March</div>
+                </div>
+                <div class="feature-card" id="card-weeklymenu">
+                    <div class="card-icon">
+                        <img src="/assets/icon_weeklymenu-DXjeH3oo.png" alt="Weekly Menu">
+                    </div>
+                    <div class="card-label">Weekly Menu</div>
+                </div>
+                <div class="feature-card" id="card-beverage">
+                    <div class="card-icon">
+                        <img src="/assets/icon_bev-CX5UN36-.png" alt="Beverage">
+                    </div>
+                    <div class="card-label">Beverage Anyone?<br>Meet Our Vendors</div>
+                </div>
+                <div class="feature-card" id="card-youpickit">
+                    <div class="card-icon">
+                        <img src="/assets/icon_youpickit-DYCBRGvr.png" alt="You Pick It">
+                    </div>
+                    <div class="card-label">You Pick It,<br>We Serve It! Vote Now</div>
+                </div>
+                <div class="feature-card" id="card-fit">
+                    <div class="card-icon">
+                        <img src="/assets/icon_fit-DnIAKXNG.png" alt="Fit">
+                    </div>
+                    <div class="card-label">New! Fit Just<br>Got Fitter</div>
+                </div>
+                <div class="feature-card" id="card-mezze">
+                    <div class="card-icon">
+                        <img src="/assets/icon_mezze-D4i5ARoc.png" alt="Mezze">
+                    </div>
+                    <div class="card-label">Mezze Got<br>an Update</div>
+                </div>
+            </div>
+            <div class="eurest-logo">
+                <img src="/assets/eurest_lockup-B9vAHz_l.png" alt="Eurest">
+            </div>
+        </div>
+
+        <!-- Weekly Menu Page (formerly home) -->
+        <div id="weekly_menu_page" class="page">
+            <div class="background">
+                <img src="./media/menuselect-dig-1.png" height="1920" width="1080" id="home">
+                <div class="password Name-27157"></div>
+            </div>
+            <div class="logo-wrapper">
+                <div class="header-wrapper">
+                    <div class="header">what's on the menu?</div>
+                    <div class="sub-header">tap an icon below</div>
+                </div>
+                <div class="brand-list"></div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="bfast_page" class="page">
+            <div class="background">
+                <img src="/assets/bfast-DSjJinny.png" height="1920" width="1080" id="wine">
+            </div>
+            <div class="section-wrapper">
+                <div class="feature-wrapper">
+                    <div class="header">daily feature</div>
+                    <div class="items-wrapper"></div>
+                </div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="tacocantina_page" class="page">
+            <div class="background">
+                <img src="/assets/tacocantina-Ba5bHbCh.png" height="1920" width="1080" id="premium">
+            </div>
+            <div class="section-wrapper">
+                <div class="feature-wrapper">
+                    <div class="header">daily feature</div>
+                    <div class="items-wrapper"></div>
+                </div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="butcherbaker_page" class="page">
+            <div class="background">
+                <img src="/assets/butcherbaker-BFX3FZVj.png" height="1920" width="1080" id="food">
+            </div>
+            <div class="section-wrapper">
+                <div class="feature-wrapper">
+                    <div class="header">daily feature</div>
+                    <div class="items-wrapper"></div>
+                </div>
+                <div class="soups-wrapper">
+                    <div class="header">soups</div>
+                    <div class="items-wrapper"></div>
+                </div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="roost_page" class="page">
+            <div class="background">
+                <img src="/assets/roost-uunEBf2d.png" height="1920" width="1080" id="food">
+            </div>
+            <div class="section-wrapper">
+                <div class="feature-wrapper">
+                    <div class="header">daily feature</div>
+                    <div class="items-wrapper"></div>
+                </div>
+                <div class="sides-wrapper">
+                    <div class="header">sides</div>
+                    <div class="items-wrapper"></div>
+                </div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="piccolaitalia_page" class="page">
+            <div class="background">
+                <img src="/assets/piccola_italia-7az8UQaT.jpg" height="1920" width="1080" id="premium">
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="bigcitybbq_page" class="page">
+            <div class="background">
+                <img src="/assets/26_BIGCityBBQ-WAND-March-Dig-Vert-Dleigsg3.jpg" height="1920" width="1080" id="food">
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="sipsbites_page" class="page">
+            <div class="background">
+                <img src="/assets/sipsbites-Lx_SCVl1.png" height="1920" width="1080" id="premium">
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="mashup_page" class="page">
+            <div class="background">
+                <img src="./media/mashup_page.png" height="1920" width="1080" id="food">
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="graze_page" class="page">
+            <div class="background">
+                <img src="/assets/graze-CIFpjhah.png" height="1920" width="1080" id="premium">
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="inspiredkitchen_page" class="page">
+            <div class="background">
+                <img src="/assets/inspired_kitchen-RjmzWexy.png" height="1920" width="1080" id="food">
+            </div>
+            <div class="section-wrapper">
+                <div class="feature-wrapper">
+                    <div class="header">daily feature</div>
+                    <div class="items-wrapper"></div>
+                </div>
+                <div class="sides-wrapper">
+                    <div class="header">sides</div>
+                    <div class="items-wrapper"></div>
+                </div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div id="flame_page" class="page">
+            <div class="background">
+                <img src="/assets/flame-Db7vwGhO.png" height="1920" width="1080" id="premium">
+            </div>
+            <div class="section-wrapper">
+                <div class="feature-wrapper">
+                    <div class="header">daily feature</div>
+                    <div class="items-wrapper"></div>
+                </div>
+                <div class="sides-wrapper">
+                    <div class="header">sides</div>
+                    <div class="items-wrapper"></div>
+                </div>
+            </div>
+            <div class="goHome">
+                <img src="/assets/homebutton-D1a0l2QT.png">
+            </div>
+        </div>
+
+        <div onclick="hideFallback()" class="fallback-wrapper">
+            <img id="image" src="">
+        </div>
+
+
+        <!--scripts-->
+        <script type="text/javascript" src="js/init.js"></script>
+</body>
+
+</html>
