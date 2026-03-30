@@ -726,45 +726,36 @@ var IMSintegration;
         MenuLayout.prototype.setupScrollDetection = function () {
             var _this = this;
             var scrollThreshold = 300;
-            var hideDelay = 4000;
-            var scrollDelta = 50;
+            var hideDelay = 1500;
+
+            _this.lastScrollTop = 0;
 
             $(window).on('scroll', function () {
                 var scrollTop = $(window).scrollTop();
                 var scrollButton = $('.nav-scroll-top');
 
-                // Show button when scrolled past threshold
-                if (scrollTop > scrollThreshold) {
-                    // Always show when past threshold
-                    if (!scrollButton.hasClass('visible')) {
-                        scrollButton.addClass('visible');
-                    }
-
-                    // Clear existing timeout
-                    if (_this.scrollTimeout) {
-                        clearTimeout(_this.scrollTimeout);
-                    }
-
-                    // Only hide after significant upward scroll AND delay
-                    if (scrollTop < _this.lastScrollTop - scrollDelta) {
-                        // Scrolling up - but keep visible for longer
-                        _this.scrollTimeout = setTimeout(function () {
-                            // Only hide if still above threshold and not actively scrolling
-                            var currentScroll = $(window).scrollTop();
-                            if (currentScroll > scrollThreshold) {
-                                scrollButton.removeClass('visible');
-                            }
-                        }, hideDelay);
-                    }
-
-                    _this.lastScrollTop = scrollTop;
-                } else {
-                    // Near top - hide button immediately
-                    scrollButton.removeClass('visible');
-                    if (_this.scrollTimeout) {
-                        clearTimeout(_this.scrollTimeout);
-                    }
+                // Clear existing timeout
+                if (_this.scrollTimeout) {
+                    clearTimeout(_this.scrollTimeout);
                 }
+
+                // Check if we're scrolling up or down
+                var isScrollingUp = scrollTop < _this.lastScrollTop;
+
+                if (scrollTop > scrollThreshold && isScrollingUp) {
+                    // Scrolling up past threshold - show button
+                    scrollButton.addClass('visible');
+
+                    // Hide after stop scrolling delay
+                    _this.scrollTimeout = setTimeout(function () {
+                        scrollButton.removeClass('visible');
+                    }, hideDelay);
+                } else {
+                    // Scrolling down or near top - hide button
+                    scrollButton.removeClass('visible');
+                }
+
+                _this.lastScrollTop = scrollTop;
             });
         };
 
