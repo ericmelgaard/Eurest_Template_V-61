@@ -822,10 +822,13 @@ min-width: 1080px;;
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: auto;
 }
 
 .modal[hidden] {
-    display: none;
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
 }
 
 .modal-overlay {

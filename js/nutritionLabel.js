@@ -77,8 +77,11 @@ function closeNutritionModal() {
 }
 
 $(document).ready(function() {
+    // Ensure modal starts hidden
+    $('#item-modal').attr('hidden', true).hide();
+
     $('#modal-close').on('click', closeNutritionModal);
-    $('.modal-overlay').on('click', closeNutritionModal);
+    $('#item-modal .modal-overlay').on('click', closeNutritionModal);
 
     $(document).on('keydown', function(e) {
         if (e.key === 'Escape' && !$('#item-modal').attr('hidden')) {
