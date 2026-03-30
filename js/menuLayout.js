@@ -730,8 +730,8 @@ var IMSintegration;
 
             _this.lastScrollTop = 0;
 
-            $(window).on('scroll', function () {
-                var scrollTop = $(window).scrollTop();
+            $('.section-wrapper').on('scroll', function () {
+                var scrollTop = $('.section-wrapper').scrollTop();
                 var scrollButton = $('.nav-scroll-top');
 
                 // Clear existing timeout
@@ -760,7 +760,7 @@ var IMSintegration;
         };
 
         MenuLayout.prototype.scrollToTop = function () {
-            $('html, body').animate({ scrollTop: 0 }, 600, 'swing');
+            $('.section-wrapper').animate({ scrollTop: 0 }, 600, 'swing');
         };
         MenuLayout.prototype.rotateEles = function () {
             if (this.isRotating) { return; }
