@@ -1223,9 +1223,9 @@ if (!Array.prototype.includes) {
 }));
 
 function setupNutritionOverlayHandlers(nutritionLabelTemplate) {
-    $(document).off('click.menuNutritionGlobal').on('click.menuNutritionGlobal', '.item-wrapper', function (e) {
+    $(document).off('click.menuNutritionGlobal').on('click.menuNutritionGlobal', '.menu-item-wrapper', function (e) {
         e.stopPropagation();
-        var nutritionData = $(this).data('nutrition');
+        var nutritionData = $(this).find('.item-wrapper').data('nutrition');
         if (nutritionData && typeof openNutritionModal === 'function') {
             openNutritionModal(nutritionData);
         }
