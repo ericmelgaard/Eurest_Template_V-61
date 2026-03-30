@@ -193,38 +193,46 @@ var IMSintegration;
             this.setupInactivityTimer();
 
             // Welcome screen card navigation
-            $('#card-weeklymenu').on('click', function () {
+            $('#card-weeklymenu').on('click', function (e) {
+                e.stopPropagation();
                 $('#weekly_menu_page').show();
                 $('.home').hide();
                 _this.resetInactivityTimer();
             });
 
             // Feature cards - keeping existing actions or no-ops for now
-            $('#card-happening').on('click', function () {
+            $('#card-happening').on('click', function (e) {
+                e.stopPropagation();
                 _this.resetInactivityTimer();
             });
 
-            $('#card-beverage').on('click', function () {
+            $('#card-beverage').on('click', function (e) {
+                e.stopPropagation();
                 _this.resetInactivityTimer();
             });
 
-            $('#card-youpickit').on('click', function () {
+            $('#card-youpickit').on('click', function (e) {
+                e.stopPropagation();
                 _this.resetInactivityTimer();
             });
 
-            $('#card-fit').on('click', function () {
+            $('#card-fit').on('click', function (e) {
+                e.stopPropagation();
+            _this.resetInactivityTimer();
+            });
+
+            $('#card-mezze').on('click', function (e) {
+                e.stopPropagation();
                 _this.resetInactivityTimer();
             });
 
-            $('#card-mezze').on('click', function () {
-                _this.resetInactivityTimer();
-            });
-
-            $('.goHome img').on('click', function () {
+            $('.goHome img').on('click', function (e) {
+                e.stopPropagation();
+                console.log('Home button clicked');
                 $('.page').hide();
                 $('.home').show();
                 _this.resetInactivityTimer();
-            })
+            });
             return true;
         };
         MenuLayout.prototype.handleProducts = function (IMSProducts) {
@@ -564,7 +572,8 @@ var IMSintegration;
             var _this = this;
 
             // Events that should reset the inactivity timer
-            var events = ['click', 'touchstart', 'touchend', 'touchmove', 'mousemove', 'mousedown'];
+            // Removed 'click' and 'mousedown' to prevent interference with actual click handlers
+            var events = ['touchstart', 'touchmove', 'mousemove'];
 
             // Add event listeners to document for all activity
             events.forEach(function (event) {
