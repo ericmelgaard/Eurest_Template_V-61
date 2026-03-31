@@ -355,6 +355,14 @@ var IMSintegration;
             var _this = this;
             console.log('🔧 populateMenuPage called for brand:', brand.brandKey, brand);
 
+            // Attach back button handler for this menu page
+            menuPage.find('.nav-back').off('click').on('click', function (e) {
+                e.stopPropagation();
+                if (window.menuLayout && typeof menuLayout.navigateBack === 'function') {
+                    menuLayout.navigateBack();
+                }
+            });
+
             var sectionWrapper = menuPage.find('.section-wrapper');
             console.log('🔧 sectionWrapper found:', sectionWrapper.length);
             sectionWrapper.empty();
