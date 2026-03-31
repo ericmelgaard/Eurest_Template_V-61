@@ -678,7 +678,7 @@ display: flex;
 }
 
 /* Responsive breakpoints */
-/* @media (max-width: 1080px) {
+@media (max-width: 1080px) {
     .home,
     .page,
     .asset-wrapper {
@@ -693,7 +693,7 @@ display: flex;
     }
 } */
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     .home {
         min-height: 100vh;
     }
@@ -770,7 +770,7 @@ display: flex;
     }
 } */
 
-/* @media (max-width: 480px) {
+@media (max-width: 480px) {
     .welcome-header {
         padding: 15px 0 10px;
     }
@@ -841,7 +841,7 @@ display: flex;
         width: 80px;
         height: 80px;
     }
-} */
+}
 
 /* Modal Styles */
 .modal {
