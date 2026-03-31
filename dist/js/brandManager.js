@@ -316,8 +316,12 @@ var IMSintegration;
             var menuPageId = '#' + brandKey + '_page';
             var menuPage = $(menuPageId);
 
+            console.log('🔧 showBrandMenu - looking for:', menuPageId, 'found:', menuPage.length);
+
             if (!menuPage.length) {
+                console.log('🔧 Page not found, creating new page');
                 menuPage = _this.createDynamicMenuPage(brandKey);
+                console.log('🔧 Created page:', menuPage.length, 'HTML:', menuPage[0]);
             }
 
             _this.populateMenuPage(brand, menuPage);
