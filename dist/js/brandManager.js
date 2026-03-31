@@ -330,18 +330,20 @@ var IMSintegration;
         BrandManager.prototype.createDynamicMenuPage = function (brandKey) {
             var pageHtml = `
                 <div id="${brandKey}_page" class="page" style="display:none;">
+                    <div class="app-bar">
+                        <button class="nav-btn nav-back" aria-label="Go back to weekly menu">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"/>
+                                <polyline points="12 19 5 12 12 5"/>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="background">
                         <img id="${brandKey}_background" src="./media/texture.png" height="1920" width="1080"/>
                     </div>
                     <div class="section-wrapper" style="margin-top: 80px;">
                         <div class="items-wrapper"></div>
                     </div>
-                    <button class="nav-btn nav-back" aria-label="Go back to weekly menu">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="19" y1="12" x2="5" y2="12"/>
-                            <polyline points="12 19 5 12 12 5"/>
-                        </svg>
-                    </button>
                 </div>
             `;
 
