@@ -52,7 +52,8 @@ var IMSintegration;
                 IMSintegration.Integration.prototype.showConnect(true, "Red", "handleLayout", e, "error");
             }
             try {
-                brandManager.init(integrationItems, function() {
+                var filteredIntegrationItems = validateItems(integrationItems);
+                brandManager.init(filteredIntegrationItems, function() {
                     _this.resetInactivityTimer();
                 });
             } catch (e) {

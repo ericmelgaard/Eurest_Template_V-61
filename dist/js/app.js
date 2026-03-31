@@ -710,7 +710,14 @@ var validateItems = function (items, station, period, type) {
         IMSintegration.Integration.prototype.showConnect(true, "forestgreen", "integration", station + " not serving", "error");
         return [];
     }
-    var typeValidated = dateValidated.filter(function (each) { return normalize(each.type) === normalize(type); });
+    function isMatch(value, filterValue, normalizer) {
+        var normalizedFilter = normalizer(filterValue);
+        if (!normalizedFilter) {
+            return true;
+        }
+        return normalizer(value) === normalizedFilter;
+    }
+    var typeValidated = dateValidated.filter(function (each) { return isMatch(each.type, type, normalize); });
     if (!typeValidated.length) {
         IMSintegration.Integration.prototype.showConnect(true, "forestgreen", "integration", station + " not serving", "error");
         return [];
@@ -723,8 +730,8 @@ var validateItems = function (items, station, period, type) {
         return (str || "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
     }
     var filteredItems = typeValidated.filter(function (each) {
-        return normalize(each.period) === normalize(period) &&
-            normalizeStation(each.station) === normalizeStation(station);
+        return isMatch(each.period, period, normalize) &&
+            isMatch(each.station, station, normalizeStation);
     });
     if (!filteredItems.length) {
         IMSintegration.Integration.prototype.showConnect(true, "forestgreen", "integration", station + " not serving", "error");
