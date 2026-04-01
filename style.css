@@ -244,6 +244,7 @@ display: flex;
     height: 1920px;
     display: none;
     padding-bottom: 160px;
+    overflow: hidden;
 }
 
 .page .background {
