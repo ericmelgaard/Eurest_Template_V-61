@@ -1486,3 +1486,43 @@ display: flex;
         font-size: 20px;
     }
 }
+
+/* Content Background Styles for Static Pages */
+.content-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.content-area {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    min-height: calc(100vh - 128px);
+}
+
+#happening-content-background {
+    background: linear-gradient(135deg, #8fd8f8 0%, #5B9BD5 100%);
+}
+
+#beverage-content-background {
+    background: linear-gradient(135deg, #7a746e 0%, #5a544e 100%);
+}
+
+#youpickit-content-background {
+    background: linear-gradient(135deg, #242d37 0%, #1a2332 100%);
+}
+
+#fit-content-background {
+    background: linear-gradient(135deg, #8B9AA4 0%, #6B7A84 100%);
+}
+
+#mezze-content-background {
+    background: linear-gradient(135deg, #b8a89e 0%, #98887e 100%);
+}
