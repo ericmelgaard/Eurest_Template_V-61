@@ -18,6 +18,7 @@ html {
     background-repeat: repeat;
     display: flex;
     height: 1920px;
+    width: 1080px;
     overscroll-behavior: none;
     touch-action: pan-y;
 }
