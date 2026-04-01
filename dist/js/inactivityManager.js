@@ -65,10 +65,9 @@ const InactivityManager = (function() {
   }
 
   function pause() {
-    if (state === 'idle') {
-      clearTimeout(warningTimer);
-      warningTimer = null;
-    }
+    clearAllTimers();
+    hideModal();
+    state = 'idle';
   }
 
   function resume() {

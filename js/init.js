@@ -395,8 +395,8 @@ function goHome(event) {
     console.log('Home button clicked');
     $('.page').hide();
     $('.home').show();
-    if (menuLayout && typeof menuLayout.resetInactivityTimer === 'function') {
-        menuLayout.resetInactivityTimer();
+    if (typeof InactivityManager !== 'undefined') {
+        InactivityManager.pause();
     }
 }
 function startPeriodicCheck() {

@@ -302,6 +302,9 @@ var IMSintegration;
                         // Warning shown silently
                     }
                 });
+
+                // Pause immediately since we start on the home screen
+                InactivityManager.pause();
             } else {
                 console.error('InactivityManager not found');
             }
