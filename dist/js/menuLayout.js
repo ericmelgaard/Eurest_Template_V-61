@@ -388,6 +388,13 @@ var IMSintegration;
                 _this.resetInactivityTimer();
             });
 
+            // Home button - returns to welcome screen from any page
+            $('.goHome').on('click', function (e) {
+                e.stopPropagation();
+                _this.navigateToWelcome();
+                _this.resetInactivityTimer();
+            });
+
             // Scroll to top button
             $('.nav-scroll-top').on('click', function (e) {
                 e.stopPropagation();
@@ -479,7 +486,7 @@ var IMSintegration;
             var isOnWelcome = $('.home:visible').length > 0;
 
             // Hide all nav buttons first
-            $('.nav-close, .nav-back').hide();
+            $('.nav-close, .nav-back, .goHome').hide();
 
             if (isOnWelcome) {
                 // On welcome screen - no navigation buttons
@@ -492,6 +499,12 @@ var IMSintegration;
             } else if (currentPage) {
                 // On any brand page - show back button
                 $('.nav-back').show();
+                // Show home button on static pages
+                if (currentPage === 'happening_page' || currentPage === 'beverage_page' ||
+                    currentPage === 'youpickit_page' || currentPage === 'fit_page' ||
+                    currentPage === 'mezze_page') {
+                    $('.goHome').show();
+                }
             }
         };
 

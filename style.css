@@ -1201,6 +1201,17 @@ display: flex;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+/* Position nav-close on the left */
+.nav-close {
+    margin-right: auto;
+}
+
+/* Position goHome on the right in app-bar */
+.app-bar .goHome {
+    position: relative;
+    margin-left: auto;
+}
+
 /* Adjust page content for app bar */
 .page {
     padding-top: 100px;
