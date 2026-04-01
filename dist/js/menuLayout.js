@@ -53,9 +53,7 @@ var IMSintegration;
             }
             try {
                 var filteredIntegrationItems = validateItems(integrationItems);
-                brandManager.init(filteredIntegrationItems, function() {
-                    _this.resetInactivityTimer();
-                });
+                brandManager.init(filteredIntegrationItems, null);
             } catch (e) {
                 console.error("Error in BrandManager init: ", e);
                 IMSintegration.Integration.prototype.showConnect(true, "Red", "brandManager", e, "error");
@@ -451,6 +449,11 @@ var IMSintegration;
 
             // Update navigation buttons
             this.updateNavigationButtons();
+
+            // Pause inactivity timer when on home screen
+            if (typeof InactivityManager !== 'undefined') {
+                InactivityManager.pause();
+            }
 
             // Scroll to top
             window.scrollTo(0, 0);
