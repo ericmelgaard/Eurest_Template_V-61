@@ -17,7 +17,6 @@ html {
     background-size: 380px 380px;
     background-repeat: repeat;
     display: flex;
-    justify-content: center;
     height: 1920px;
     overscroll-behavior: none;
     touch-action: pan-y;
