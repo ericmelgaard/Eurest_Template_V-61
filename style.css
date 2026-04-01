@@ -1507,25 +1507,6 @@ display: flex;
     min-height: calc(100vh - 128px);
 }
 
-#happening-content-background {
-    background: linear-gradient(135deg, #8fd8f8 0%, #5B9BD5 100%);
-}
-
-#beverage-content-background {
-    background: linear-gradient(135deg, #7a746e 0%, #5a544e 100%);
-}
-
-#youpickit-content-background {
-    background: linear-gradient(135deg, #242d37 0%, #1a2332 100%);
-}
-
-#fit-content-background {
-    background: linear-gradient(135deg, #8B9AA4 0%, #6B7A84 100%);
-}
-
-#mezze-content-background {
-    background: linear-gradient(135deg, #b8a89e 0%, #98887e 100%);
-}
 
 .static-page-message {
     position: absolute;
@@ -1534,11 +1515,11 @@ display: flex;
     transform: translate(-50%, -50%);
     font-family: "BarlowSemiCondensed-Regular", sans-serif;
     font-size: 56px;
-    color: rgba(255, 255, 255, 0.9);
+    color: #282828;
     text-align: center;
     padding: 40px 60px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     z-index: 10;
 }
