@@ -1241,9 +1241,6 @@ display: flex;
     right: 50px;
 }
 
-.floating-nav-close {
-    right: 50px;
-}
 
 /* Remove page padding that was needed for app bar */
 .page {
@@ -1303,7 +1300,7 @@ display: flex;
         font-size: 16px;
     }
 
-    .floating-nav-home, .floating-nav-close {
+    .floating-nav-home {
         right: 35px;
     }
 
@@ -1357,7 +1354,7 @@ display: flex;
         font-size: 14px;
     }
 
-    .floating-nav-home, .floating-nav-close {
+    .floating-nav-home {
         right: 25px;
     }
 

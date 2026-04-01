@@ -374,8 +374,8 @@ var IMSintegration;
         MenuLayout.prototype.setupNavigationButtons = function () {
             var _this = this;
 
-            // Close button - returns to welcome screen from weekly menu
-            $(document).on('click', '.floating-nav-close', function (e) {
+            // Home button - returns to welcome screen from weekly menu
+            $(document).on('click', '.floating-nav-home', function (e) {
                 e.stopPropagation();
                 _this.navigateToWelcome();
                 _this.resetInactivityTimer();
@@ -486,7 +486,7 @@ var IMSintegration;
             var isOnWelcome = $('.home:visible').length > 0;
 
             // Hide all floating nav buttons first
-            $('.floating-nav-close, .floating-nav-back, .floating-nav-home').hide();
+            $('.floating-nav-back, .floating-nav-home').hide();
 
             if (isOnWelcome) {
                 // On welcome screen - no navigation buttons
@@ -494,8 +494,8 @@ var IMSintegration;
             }
 
             if (currentPage === 'weekly_menu_page') {
-                // On weekly menu page - show close button
-                $('.floating-nav-close').show();
+                // On weekly menu page - show home button
+                $('.floating-nav-home').show();
             } else if (currentPage) {
                 // On any page - always show home button
                 $('.floating-nav-home').show();
