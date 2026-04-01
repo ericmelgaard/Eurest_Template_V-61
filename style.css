@@ -1146,20 +1146,14 @@ display: flex;
 }
 
 .floating-nav-btn svg {
-    width: 42px;
-    height: 42px;
+    width: 56px;
+    height: 56px;
     color: #2c2c2c;
     transition: all 0.3s ease;
 }
 
 .floating-nav-label {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #2c2c2c;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 2px;
+    display: none;
 }
 
 .floating-nav-btn:hover {
