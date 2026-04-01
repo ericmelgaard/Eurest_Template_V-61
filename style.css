@@ -1104,124 +1104,98 @@ display: flex;
     cursor: pointer;
 }
 
-/* App Bar Styles */
-.app-bar {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1080px;
-    max-width: 100%;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-}
-
-.brand-name-display {
-    color: #2c2c2c;
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    font-size: 42px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-right: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: calc(100% - 120px);
-    flex-shrink: 1;
-}
-
-.brand-logo-display {
+/* Brand Header Logo in Content */
+.brand-header-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70px;
-    margin-right: 20px;
-    overflow: hidden;
-    max-width: calc(100% - 120px);
-    flex-shrink: 1;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    padding: 60px 40px 40px;
+    margin-bottom: 20px;
 }
 
-.brand-logo-display img {
-    max-height: 100%;
-    max-width: 100%;
+.brand-header-logo img {
+    max-height: 180px;
+    max-width: 80%;
     object-fit: contain;
     display: block;
 }
 
-/* Navigation Button Styles */
-.nav-btn {
-    position: relative;
-    width: 70px;
-    height: 70px;
+/* Floating Navigation Button Styles */
+.floating-nav-btn {
+    position: fixed;
+    bottom: 50px;
+    width: 110px;
+    height: 110px;
     border: none;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0;
     z-index: 1001;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    gap: 4px;
 }
 
-.nav-btn svg {
-    width: 36px;
-    height: 36px;
+.floating-nav-btn svg {
+    width: 42px;
+    height: 42px;
     color: #2c2c2c;
     transition: all 0.3s ease;
 }
 
-.nav-btn:hover {
-    background: rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.floating-nav-label {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c2c2c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
 }
 
-.nav-btn:hover svg {
-    transform: scale(1.1);
+.floating-nav-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-.nav-btn:active {
-    transform: translateY(0);
-    background: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.floating-nav-btn:hover svg {
+    transform: scale(1.15);
 }
 
-/* Position nav-close on the left */
-.nav-close {
-    margin-right: auto;
+.floating-nav-btn:active {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Position goHome on the right in app-bar */
-.app-bar .goHome {
-    position: relative;
-    margin-left: auto;
+/* Position floating nav buttons */
+.floating-nav-back {
+    left: 50px;
 }
 
-/* Adjust page content for app bar */
+.floating-nav-home {
+    right: 50px;
+}
+
+.floating-nav-close {
+    right: 50px;
+}
+
+/* Remove page padding that was needed for app bar */
 .page {
-    padding-top: 100px;
+    padding-top: 40px;
 }
 
 #weekly_menu_page {
-    padding-top: 140px;
+    padding-top: 40px;
 }
 
 /* Scroll to top button */
@@ -1258,38 +1232,35 @@ display: flex;
 }
 
 @media (max-width: 768px) {
-    .app-bar {
-        height: 80px;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
+    .floating-nav-btn {
+        width: 90px;
+        height: 90px;
+        bottom: 35px;
     }
 
-    .brand-name-display {
-        font-size: 28px;
-        margin-right: 10px;
+    .floating-nav-btn svg {
+        width: 34px;
+        height: 34px;
     }
 
-    .brand-logo-display {
-        height: 60px;
-        padding: 6px 12px;
+    .floating-nav-label {
+        font-size: 16px;
     }
 
-    .nav-btn {
-        width: 56px;
-        height: 56px;
+    .floating-nav-back {
+        left: 35px;
     }
 
-    .nav-btn svg {
-        width: 28px;
-        height: 28px;
+    .floating-nav-home, .floating-nav-close {
+        right: 35px;
     }
 
-    .page {
-        padding-top: 80px;
+    .brand-header-logo {
+        padding: 50px 30px 30px;
     }
 
-    #weekly_menu_page {
-        padding-top: 120px;
+    .brand-header-logo img {
+        max-height: 140px;
     }
 
     .nav-scroll-top {
@@ -1301,38 +1272,35 @@ display: flex;
 }
 
 @media (max-width: 480px) {
-    .app-bar {
-        height: 70px;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+    .floating-nav-btn {
+        width: 75px;
+        height: 75px;
+        bottom: 25px;
     }
 
-    .brand-name-display {
-        font-size: 20px;
-        margin-right: 5px;
+    .floating-nav-btn svg {
+        width: 28px;
+        height: 28px;
     }
 
-    .brand-logo-display {
-        height: 50px;
-        padding: 5px 10px;
+    .floating-nav-label {
+        font-size: 14px;
     }
 
-    .nav-btn {
-        width: 48px;
-        height: 48px;
+    .floating-nav-back {
+        left: 25px;
     }
 
-    .nav-btn svg {
-        width: 24px;
-        height: 24px;
+    .floating-nav-home, .floating-nav-close {
+        right: 25px;
     }
 
-    .page {
-        padding-top: 70px;
+    .brand-header-logo {
+        padding: 40px 20px 20px;
     }
 
-    #weekly_menu_page {
-        padding-top: 110px;
+    .brand-header-logo img {
+        max-height: 110px;
     }
 
     .nav-scroll-top {

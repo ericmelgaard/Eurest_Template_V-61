@@ -375,21 +375,21 @@ var IMSintegration;
             var _this = this;
 
             // Close button - returns to welcome screen from weekly menu
-            $('.nav-close').on('click', function (e) {
+            $(document).on('click', '.floating-nav-close', function (e) {
                 e.stopPropagation();
                 _this.navigateToWelcome();
                 _this.resetInactivityTimer();
             });
 
             // Back button - returns to previous page
-            $('.nav-back').on('click', function (e) {
+            $(document).on('click', '.floating-nav-back', function (e) {
                 e.stopPropagation();
                 _this.navigateBack();
                 _this.resetInactivityTimer();
             });
 
             // Home button - returns to welcome screen from any page
-            $('.goHome').on('click', function (e) {
+            $(document).on('click', '.floating-nav-home', function (e) {
                 e.stopPropagation();
                 _this.navigateToWelcome();
                 _this.resetInactivityTimer();
@@ -485,8 +485,8 @@ var IMSintegration;
             var currentPage = $('.page:visible').attr('id');
             var isOnWelcome = $('.home:visible').length > 0;
 
-            // Hide all nav buttons first
-            $('.nav-close, .nav-back, .goHome').hide();
+            // Hide all floating nav buttons first
+            $('.floating-nav-close, .floating-nav-back, .floating-nav-home').hide();
 
             if (isOnWelcome) {
                 // On welcome screen - no navigation buttons
@@ -495,15 +495,16 @@ var IMSintegration;
 
             if (currentPage === 'weekly_menu_page') {
                 // On weekly menu page - show close button
-                $('.nav-close').show();
+                $('.floating-nav-close').show();
             } else if (currentPage) {
-                // On any brand page - show back button
-                $('.nav-back').show();
-                // Show home button on static pages
+                // On any page - always show home button
+                $('.floating-nav-home').show();
+
+                // Show back button on static pages (not on brand menus - they have their own)
                 if (currentPage === 'happening_page' || currentPage === 'beverage_page' ||
                     currentPage === 'youpickit_page' || currentPage === 'fit_page' ||
                     currentPage === 'mezze_page') {
-                    $('.goHome').show();
+                    // Static pages only have home button, no back button needed
                 }
             }
         };

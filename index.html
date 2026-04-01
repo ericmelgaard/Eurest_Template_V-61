@@ -92,14 +92,13 @@
 
         <!-- Weekly Menu Page (formerly home) -->
         <div id="weekly_menu_page" class="page">
-            <div class="app-bar">
-                <button class="nav-btn nav-close" aria-label="Close and return to welcome screen">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="floating-nav-btn floating-nav-close" aria-label="Close and return to welcome screen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+                <span class="floating-nav-label">Close</span>
+            </button>
             <div class="background">
                 <img src="./media/menuselect-dig-1.png" height="1920" width="1080" id="home">
                 <div class="password Name-27157"></div>
@@ -115,20 +114,13 @@
 
         <!-- What's Happening Page -->
         <div id="happening_page" class="page" style="display: none;">
-            <div class="app-bar">
-                <button class="nav-btn nav-close" aria-label="Close and return to welcome screen">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-                <button class="nav-btn goHome" aria-label="Go home">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="floating-nav-label">Home</span>
+            </button>
             <div id="happening-content-background" class="content-background"></div>
             <div class="content-area">
                 <div class="static-page-message">What's Happening content will appear here</div>
@@ -137,20 +129,13 @@
 
         <!-- Beverage Page -->
         <div id="beverage_page" class="page" style="display: none;">
-            <div class="app-bar">
-                <button class="nav-btn nav-close" aria-label="Close and return to welcome screen">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-                <button class="nav-btn goHome" aria-label="Go home">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="floating-nav-label">Home</span>
+            </button>
             <div id="beverage-content-background" class="content-background"></div>
             <div class="content-area">
                 <div class="static-page-message">Beverage content will appear here</div>
@@ -159,20 +144,13 @@
 
         <!-- You Pick It Page -->
         <div id="youpickit_page" class="page" style="display: none;">
-            <div class="app-bar">
-                <button class="nav-btn nav-close" aria-label="Close and return to welcome screen">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-                <button class="nav-btn goHome" aria-label="Go home">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="floating-nav-label">Home</span>
+            </button>
             <div id="youpickit-content-background" class="content-background"></div>
             <div class="content-area">
                 <div class="static-page-message">You Pick It content will appear here</div>
@@ -181,20 +159,13 @@
 
         <!-- Fit Page -->
         <div id="fit_page" class="page" style="display: none;">
-            <div class="app-bar">
-                <button class="nav-btn nav-close" aria-label="Close and return to welcome screen">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-                <button class="nav-btn goHome" aria-label="Go home">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="floating-nav-label">Home</span>
+            </button>
             <div id="fit-content-background" class="content-background"></div>
             <div class="content-area">
                 <div class="static-page-message">Fit content will appear here</div>
@@ -203,20 +174,13 @@
 
         <!-- Mezze Page -->
         <div id="mezze_page" class="page" style="display: none;">
-            <div class="app-bar">
-                <button class="nav-btn nav-close" aria-label="Close and return to welcome screen">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/>
-                        <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-                <button class="nav-btn goHome" aria-label="Go home">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </button>
-            </div>
+            <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="floating-nav-label">Home</span>
+            </button>
             <div id="mezze-content-background" class="content-background"></div>
             <div class="content-area">
                 <div class="static-page-message">Mezze content will appear here</div>

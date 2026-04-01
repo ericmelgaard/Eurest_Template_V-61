@@ -499,21 +499,27 @@ var IMSintegration;
 
             var pageHtml = `
                 <div id="${brandKey}_page" class="page" style="display:none;">
-                    <div class="app-bar">
-                        <button class="nav-btn nav-back" aria-label="Go back to weekly menu">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="19" y1="12" x2="5" y2="12"/>
-                                <polyline points="12 19 5 12 12 5"/>
-                            </svg>
-                        </button>
-                        <div class="brand-logo-display">
-                            <img src="${brandLogoUrl}" alt="Brand logo" />
-                        </div>
-                    </div>
+                    <button class="floating-nav-btn floating-nav-back" aria-label="Back to Menu Selection">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"/>
+                            <polyline points="12 19 5 12 12 5"/>
+                        </svg>
+                        <span class="floating-nav-label">Menu</span>
+                    </button>
+                    <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <span class="floating-nav-label">Home</span>
+                    </button>
                     <div class="background">
                         <img id="${brandKey}_background" src="./media/texture.png" height="1920" width="1080"/>
                     </div>
-                    <div class="section-wrapper" style="margin-top: 80px;">
+                    <div class="section-wrapper">
+                        <div class="brand-header-logo">
+                            <img src="${brandLogoUrl}" alt="Brand logo" />
+                        </div>
                         <div class="items-wrapper"></div>
                     </div>
                 </div>
@@ -528,10 +534,18 @@ var IMSintegration;
             console.log('🔧 populateMenuPage called for brand:', brand.brandKey, brand);
 
             // Attach back button handler for this menu page
-            menuPage.find('.nav-back').off('click').on('click', function (e) {
+            menuPage.find('.floating-nav-back').off('click').on('click', function (e) {
                 e.stopPropagation();
                 if (window.menuLayout && typeof menuLayout.navigateBack === 'function') {
                     menuLayout.navigateBack();
+                }
+            });
+
+            // Attach home button handler for this menu page
+            menuPage.find('.floating-nav-home').off('click').on('click', function (e) {
+                e.stopPropagation();
+                if (window.menuLayout && typeof menuLayout.navigateToWelcome === 'function') {
+                    menuLayout.navigateToWelcome();
                 }
             });
 
