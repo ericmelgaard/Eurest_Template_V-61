@@ -333,9 +333,13 @@ var IMSintegration;
 
             this.updateNavigationButtons();
 
-            $('.section-wrapper').scrollTop(0);
+            $('.section-wrapper').each(function() {
+                $(this).scrollTop(0);
+            });
             $('.brand-list').scrollTop(0);
-            window.scrollTo(0, 0);
+            $('.modal-content').scrollTop(0);
+            $('body').scrollTop(0);
+            $(window).scrollTop(0);
 
             if (this.breakfast_overlay) {
                 $(this.breakfast_overlay).hide();
