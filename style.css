@@ -241,7 +241,7 @@ display: flex;
     position: relative;
     width: 100%;
     max-width: 1080px;
-    min-height: 100vh;
+    height: 1920px;
     display: none;
     padding-bottom: 160px;
 }
