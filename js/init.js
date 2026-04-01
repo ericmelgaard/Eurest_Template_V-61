@@ -208,6 +208,10 @@ function ready(isLeader) {
     }
     //wand lib is ready for trmAnimate now.
     animateObserver();
+
+    if (typeof SwipeGestureManager !== 'undefined') {
+        SwipeGestureManager.init();
+    }
 }
 ;
 function checkSiblings() {

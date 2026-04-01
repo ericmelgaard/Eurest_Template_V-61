@@ -19,6 +19,8 @@ html {
     display: flex;
     justify-content: center;
     height: 1920px;
+    overscroll-behavior: none;
+    touch-action: pan-y;
 }
 
 body {
@@ -26,7 +28,8 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-
+    overscroll-behavior: none;
+    touch-action: pan-y;
 }
 
 .background {
