@@ -214,29 +214,34 @@ var IMSintegration;
                 _this.resetInactivityTimer();
             });
 
-            // Feature cards - keeping existing actions or no-ops for now
+            // Feature cards - navigate to static content pages
             $('#card-happening').on('click', function (e) {
                 e.stopPropagation();
+                _this.navigateToPage('happening_page');
                 _this.resetInactivityTimer();
             });
 
             $('#card-beverage').on('click', function (e) {
                 e.stopPropagation();
+                _this.navigateToPage('beverage_page');
                 _this.resetInactivityTimer();
             });
 
             $('#card-youpickit').on('click', function (e) {
                 e.stopPropagation();
+                _this.navigateToPage('youpickit_page');
                 _this.resetInactivityTimer();
             });
 
             $('#card-fit').on('click', function (e) {
                 e.stopPropagation();
+                _this.navigateToPage('fit_page');
                 _this.resetInactivityTimer();
             });
 
             $('#card-mezze').on('click', function (e) {
                 e.stopPropagation();
+                _this.navigateToPage('mezze_page');
                 _this.resetInactivityTimer();
             });
 
