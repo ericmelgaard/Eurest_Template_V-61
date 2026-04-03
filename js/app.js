@@ -383,7 +383,8 @@ var IMSintegration;
                             vegetarian = true;
                         if (eachIcon.name.includes("Vegan"))
                             vegan = true;
-                        eachIcon.fileName = "media/icon_".concat(eachIcon.name.replace(/\s+/g, '').toLowerCase(), ".png");
+                        var sanitizedName = eachIcon.name.replace(/\s+/g, '').toLowerCase().replace(/[^a-z0-9_-]/g, '');
+                        eachIcon.fileName = "media/icon_".concat(sanitizedName, ".png");
                         eachIcon.name = eachIcon.name.replace(/\s+/g, '').toLowerCase();
                     });
                     each.icons.forEach(function (eachIcon, idx) {
