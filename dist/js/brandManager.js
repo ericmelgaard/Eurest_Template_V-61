@@ -237,15 +237,23 @@ var IMSintegration;
             return stationName.trim();
         };
 
+        BrandManager.prototype.normalizeForMatching = function (text) {
+            if (!text) return "";
+            // Remove all special characters and extra whitespace, keep only alphanumeric and spaces
+            return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+        };
+
         BrandManager.prototype.matchesIncludePattern = function (stationName) {
             var _this = this;
-            var sanitized = _this.sanitizeStationName(stationName).toLowerCase();
+            var sanitized = _this.sanitizeStationName(stationName);
+            var normalized = _this.normalizeForMatching(sanitized);
 
             // Search through all brand configs to find matching station
             for (var brandKey in _this.brandConfig) {
                 var brand = _this.brandConfig[brandKey];
                 for (var i = 0; i < brand.stations.length; i++) {
-                    if (sanitized === brand.stations[i]) {
+                    var normalizedPattern = _this.normalizeForMatching(brand.stations[i]);
+                    if (normalized === normalizedPattern) {
                         return {
                             matchedStation: brand.stations[i],
                             brandKey: brandKey,
