@@ -248,12 +248,15 @@ var IMSintegration;
             var sanitized = _this.sanitizeStationName(stationName);
             var normalized = _this.normalizeForMatching(sanitized);
 
+            console.log('🔍 Matching station:', stationName, '→ normalized:', normalized);
+
             // Search through all brand configs to find matching station
             for (var brandKey in _this.brandConfig) {
                 var brand = _this.brandConfig[brandKey];
                 for (var i = 0; i < brand.stations.length; i++) {
                     var normalizedPattern = _this.normalizeForMatching(brand.stations[i]);
                     if (normalized === normalizedPattern) {
+                        console.log('✅ MATCH FOUND:', brand.stations[i], '(key:', brandKey + ')');
                         return {
                             matchedStation: brand.stations[i],
                             brandKey: brandKey,
@@ -262,6 +265,7 @@ var IMSintegration;
                     }
                 }
             }
+            console.log('❌ No match found for:', normalized);
             return null;
         };
 
