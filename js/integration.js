@@ -796,7 +796,7 @@ var IMSintegration;
             if (_this.API === "webtrition") {
                 var url = "https://" +
                     _this.wand +
-                    "/services/webtrition/client/wds" +
+                    "/services/webtrition/client/v3/wds" +
                     "?SapCode=" +
                     _this.brand +
                     "&Venue=" +
