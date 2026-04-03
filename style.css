@@ -776,6 +776,7 @@ display: flex;
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    align-items: baseline;
 }
 
 .item-price {
