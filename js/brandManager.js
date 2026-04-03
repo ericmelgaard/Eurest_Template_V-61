@@ -168,7 +168,9 @@ var IMSintegration;
                         "piccola italia (pizza) - by the slice",
                         "piccola italia (pizza) - individual pizza",
                         "piccola italia (pasta) - entree + 1 side",
-                        "piccola italia (pasta) - entree + 2 sides"
+                        "piccola italia (pasta) - entree + 2 sides",
+                        "piccola italia pizza - daily features",
+                        "piccola italia pasta - daily features"
                     ]
                 },
                 "picomesa": {
