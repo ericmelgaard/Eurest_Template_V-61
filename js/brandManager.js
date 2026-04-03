@@ -239,8 +239,8 @@ var IMSintegration;
 
         BrandManager.prototype.normalizeForMatching = function (text) {
             if (!text) return "";
-            // Remove all special characters and extra whitespace, keep only alphanumeric and spaces
-            return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+            // Remove all special characters and whitespace, keep only alphanumeric
+            return text.toLowerCase().replace(/[^a-z0-9]/g, '');
         };
 
         BrandManager.prototype.matchesIncludePattern = function (stationName) {
