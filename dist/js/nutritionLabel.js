@@ -2,7 +2,9 @@
 
 function openNutritionModal(itemData) {
     const modal = $('#item-modal');
-    const nutrition = itemData.nutrition || {};
+
+    const nutrients = itemData.nutrients || [];
+    const getNutrient = (index) => nutrients[index] || {};
 
     $('#modal-title').text(itemData.name || '');
     $('#modal-price').text(itemData.price || '');
@@ -29,43 +31,58 @@ function openNutritionModal(itemData) {
     }
 
     $('#nutrition-serving').text(itemData.portion || '');
-    $('#nutrition-calories').text(itemData.calories || '0');
 
-    $('#nutrition-fat').text(nutrition.fat?.value || '0');
-    $('#nutrition-fat-dv').text(nutrition.fat?.percentDailyValue || '0');
+    const calories = getNutrient(0);
+    $('#nutrition-calories').text(calories.value || '0');
 
-    $('#nutrition-sat-fat').text(nutrition.saturatedFat?.value || '0');
-    $('#nutrition-sat-fat-dv').text(nutrition.saturatedFat?.percentDailyValue || '0');
+    const totalFat = getNutrient(1);
+    $('#nutrition-fat').text(totalFat.value || '0');
+    $('#nutrition-fat-dv').text(totalFat.dailyValue || '0');
 
-    $('#nutrition-trans-fat').text(nutrition.transFat?.value || '0');
+    const satFat = getNutrient(2);
+    $('#nutrition-sat-fat').text(satFat.value || '0');
+    $('#nutrition-sat-fat-dv').text(satFat.dailyValue || '0');
 
-    $('#nutrition-cholesterol').text(nutrition.cholesterol?.value || '0');
-    $('#nutrition-cholesterol-dv').text(nutrition.cholesterol?.percentDailyValue || '0');
+    const transFat = getNutrient(3);
+    $('#nutrition-trans-fat').text(transFat.value || '0');
 
-    $('#nutrition-sodium').text(nutrition.sodium?.value || '0');
-    $('#nutrition-sodium-dv').text(nutrition.sodium?.percentDailyValue || '0');
+    const cholesterol = getNutrient(6);
+    $('#nutrition-cholesterol').text(cholesterol.value || '0');
+    $('#nutrition-cholesterol-dv').text(cholesterol.dailyValue || '0');
 
-    $('#nutrition-carbs').text(nutrition.carbohydrates?.value || '0');
-    $('#nutrition-carbs-dv').text(nutrition.carbohydrates?.percentDailyValue || '0');
+    const sodium = getNutrient(8);
+    $('#nutrition-sodium').text(sodium.value || '0');
+    $('#nutrition-sodium-dv').text(sodium.dailyValue || '0');
 
-    $('#nutrition-fiber').text(nutrition.dietaryFiber?.value || '0');
-    $('#nutrition-fiber-dv').text(nutrition.dietaryFiber?.percentDailyValue || '0');
+    const carbs = getNutrient(4);
+    $('#nutrition-carbs').text(carbs.value || '0');
+    $('#nutrition-carbs-dv').text(carbs.dailyValue || '0');
 
-    $('#nutrition-sugars').text(nutrition.sugars?.value || '0');
+    const fiber = getNutrient(5);
+    $('#nutrition-fiber').text(fiber.value || '0');
+    $('#nutrition-fiber-dv').text(fiber.dailyValue || '0');
 
-    $('#nutrition-protein').text(nutrition.protein?.value || '0');
+    const sugars = getNutrient(7);
+    $('#nutrition-sugars').text(sugars.value || '0');
 
-    $('#nutrition-vitamin-d').text(nutrition.vitaminD?.value || '0');
-    $('#nutrition-vitamin-d-dv').text(nutrition.vitaminD?.percentDailyValue || '0');
+    const protein = getNutrient(12);
+    $('#nutrition-protein').text(protein.value || '0');
 
-    $('#nutrition-calcium').text(nutrition.calcium?.value || '0');
-    $('#nutrition-calcium-dv').text(nutrition.calcium?.percentDailyValue || '0');
+    const vitaminD = getNutrient(14);
+    $('#nutrition-vitamin-d').text(vitaminD.value || '0');
+    $('#nutrition-vitamin-d-dv').text(vitaminD.dailyValue || '0');
 
-    $('#nutrition-iron').text(nutrition.iron?.value || '0');
-    $('#nutrition-iron-dv').text(nutrition.iron?.percentDailyValue || '0');
+    const calcium = getNutrient(9);
+    $('#nutrition-calcium').text(calcium.value || '0');
+    $('#nutrition-calcium-dv').text(calcium.dailyValue || '0');
 
-    $('#nutrition-potassium').text(nutrition.potassium?.value || '0');
-    $('#nutrition-potassium-dv').text(nutrition.potassium?.percentDailyValue || '0');
+    const iron = getNutrient(10);
+    $('#nutrition-iron').text(iron.value || '0');
+    $('#nutrition-iron-dv').text(iron.dailyValue || '0');
+
+    const potassium = getNutrient(11);
+    $('#nutrition-potassium').text(potassium.value || '0');
+    $('#nutrition-potassium-dv').text(potassium.dailyValue || '0');
 
     modal.removeAttr('hidden').fadeIn(300);
 
