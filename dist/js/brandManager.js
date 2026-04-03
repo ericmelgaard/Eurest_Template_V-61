@@ -165,12 +165,18 @@ var IMSintegration;
                 "piccolaitalia": {
                     displayName: "Piccola Italia",
                     stations: [
-                        "piccola italia (pizza) - by the slice",
-                        "piccola italia (pizza) - individual pizza",
-                        "piccola italia (pasta) - entree + 1 side",
-                        "piccola italia (pasta) - entree + 2 sides",
+                        "piccola italia pasta - choose your base",
+                        "piccola italia pasta - choose your protein",
+                        "piccola italia pasta - choose your toppings",
+                        "piccola italia pasta - add a side",
+                        "piccola italia pasta - daily features",
+                        "piccola italia pizza - choose your base",
+                        "piccola italia pizza - choose your protein",
+                        "piccola italia pizza - choose your toppings",
+                        "piccola italia pizza - add a side",
                         "piccola italia pizza - daily features",
-                        "piccola italia pasta - daily features"
+                        "piccola italia pizza - by the slice",
+                        "piccola italia pizza - personal pizza"
                     ]
                 },
                 "picomesa": {
