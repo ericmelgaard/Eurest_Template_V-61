@@ -7,7 +7,19 @@ function openNutritionModal(itemData) {
     console.log('Nutrients array:', itemData.nutrients);
 
     const nutrients = itemData.nutrients || [];
-    const getNutrient = (index) => nutrients[index] || {};
+
+    // Create a map of nutrients by name for easier access
+    const nutrientMap = {};
+    nutrients.forEach(nutrient => {
+        if (nutrient.name) {
+            nutrientMap[nutrient.name.toLowerCase()] = nutrient;
+        }
+    });
+
+    const getNutrientByName = (name) => {
+        const nutrient = nutrientMap[name.toLowerCase()];
+        return nutrient || { value: '0', dailyValuePercentage: '0' };
+    };
 
     $('#modal-title').text(itemData.name || '');
     $('#modal-price').text(itemData.price || '');
@@ -35,59 +47,82 @@ function openNutritionModal(itemData) {
 
     $('#nutrition-serving').text(itemData.portion || '');
 
-    const calories = getNutrient(0);
+    const calories = getNutrientByName('Calories');
     console.log('Calories nutrient:', calories);
     $('#nutrition-calories').text(calories.value || '0');
 
-    const totalFat = getNutrient(1);
+    const totalFat = getNutrientByName('Fat (g)');
     console.log('Total Fat nutrient:', totalFat);
-    $('#nutrition-fat').text(totalFat.value || '0');
-    $('#nutrition-fat-dv').text(totalFat.dailyValue !== null && totalFat.dailyValue !== undefined ? totalFat.dailyValue : '0');
+    const totalFatValue = totalFat.value && totalFat.value !== '-' ? totalFat.value : '0';
+    const totalFatDV = totalFat.dailyValuePercentage ? totalFat.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-fat').text(totalFatValue);
+    $('#nutrition-fat-dv').text(totalFatDV);
 
-    const satFat = getNutrient(2);
-    $('#nutrition-sat-fat').text(satFat.value || '0');
-    $('#nutrition-sat-fat-dv').text(satFat.dailyValue !== null && satFat.dailyValue !== undefined ? satFat.dailyValue : '0');
+    const satFat = getNutrientByName('Saturated Fat (g)');
+    const satFatValue = satFat.value && satFat.value !== '-' ? satFat.value : '0';
+    const satFatDV = satFat.dailyValuePercentage ? satFat.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-sat-fat').text(satFatValue);
+    $('#nutrition-sat-fat-dv').text(satFatDV);
 
-    const transFat = getNutrient(3);
-    $('#nutrition-trans-fat').text(transFat.value || '0');
+    const transFat = getNutrientByName('Trans Fat (g)');
+    const transFatValue = transFat.value && transFat.value !== '-' ? transFat.value : '0';
+    $('#nutrition-trans-fat').text(transFatValue);
 
-    const cholesterol = getNutrient(6);
-    $('#nutrition-cholesterol').text(cholesterol.value || '0');
-    $('#nutrition-cholesterol-dv').text(cholesterol.dailyValue !== null && cholesterol.dailyValue !== undefined ? cholesterol.dailyValue : '0');
+    const cholesterol = getNutrientByName('Cholesterol (mg)');
+    const cholesterolValue = cholesterol.value && cholesterol.value !== '-' ? cholesterol.value : '0';
+    const cholesterolDV = cholesterol.dailyValuePercentage ? cholesterol.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-cholesterol').text(cholesterolValue);
+    $('#nutrition-cholesterol-dv').text(cholesterolDV);
 
-    const sodium = getNutrient(8);
-    $('#nutrition-sodium').text(sodium.value || '0');
-    $('#nutrition-sodium-dv').text(sodium.dailyValue !== null && sodium.dailyValue !== undefined ? sodium.dailyValue : '0');
+    const sodium = getNutrientByName('Sodium (mg)');
+    const sodiumValue = sodium.value && sodium.value !== '-' ? sodium.value : '0';
+    const sodiumDV = sodium.dailyValuePercentage ? sodium.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-sodium').text(sodiumValue);
+    $('#nutrition-sodium-dv').text(sodiumDV);
 
-    const carbs = getNutrient(4);
-    $('#nutrition-carbs').text(carbs.value || '0');
-    $('#nutrition-carbs-dv').text(carbs.dailyValue !== null && carbs.dailyValue !== undefined ? carbs.dailyValue : '0');
+    const carbs = getNutrientByName('Carbohydrate (g)');
+    const carbsValue = carbs.value && carbs.value !== '-' ? carbs.value : '0';
+    const carbsDV = carbs.dailyValuePercentage ? carbs.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-carbs').text(carbsValue);
+    $('#nutrition-carbs-dv').text(carbsDV);
 
-    const fiber = getNutrient(5);
-    $('#nutrition-fiber').text(fiber.value || '0');
-    $('#nutrition-fiber-dv').text(fiber.dailyValue !== null && fiber.dailyValue !== undefined ? fiber.dailyValue : '0');
+    const fiber = getNutrientByName('Dietary Fiber (g)');
+    const fiberValue = fiber.value && fiber.value !== '-' ? fiber.value : '0';
+    const fiberDV = fiber.dailyValuePercentage ? fiber.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-fiber').text(fiberValue);
+    $('#nutrition-fiber-dv').text(fiberDV);
 
-    const sugars = getNutrient(7);
-    $('#nutrition-sugars').text(sugars.value || '0');
+    const sugars = getNutrientByName('Sugars (g)');
+    const sugarsValue = sugars.value && sugars.value !== '-' ? sugars.value : '0';
+    $('#nutrition-sugars').text(sugarsValue);
 
-    const protein = getNutrient(12);
-    $('#nutrition-protein').text(protein.value || '0');
+    const protein = getNutrientByName('Protein (g)');
+    const proteinValue = protein.value && protein.value !== '-' ? protein.value : '0';
+    $('#nutrition-protein').text(proteinValue);
 
-    const vitaminD = getNutrient(14);
-    $('#nutrition-vitamin-d').text(vitaminD.value || '0');
-    $('#nutrition-vitamin-d-dv').text(vitaminD.dailyValue !== null && vitaminD.dailyValue !== undefined ? vitaminD.dailyValue : '0');
+    const vitaminD = getNutrientByName('Vitamin D (mcg)');
+    const vitaminDValue = vitaminD.value && vitaminD.value !== '-' ? vitaminD.value : '0';
+    const vitaminDDV = vitaminD.dailyValuePercentage ? vitaminD.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-vitamin-d').text(vitaminDValue);
+    $('#nutrition-vitamin-d-dv').text(vitaminDDV);
 
-    const calcium = getNutrient(9);
-    $('#nutrition-calcium').text(calcium.value || '0');
-    $('#nutrition-calcium-dv').text(calcium.dailyValue !== null && calcium.dailyValue !== undefined ? calcium.dailyValue : '0');
+    const calcium = getNutrientByName('Calcium (mg)');
+    const calciumValue = calcium.value && calcium.value !== '-' ? calcium.value : '0';
+    const calciumDV = calcium.dailyValuePercentage ? calcium.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-calcium').text(calciumValue);
+    $('#nutrition-calcium-dv').text(calciumDV);
 
-    const iron = getNutrient(10);
-    $('#nutrition-iron').text(iron.value || '0');
-    $('#nutrition-iron-dv').text(iron.dailyValue !== null && iron.dailyValue !== undefined ? iron.dailyValue : '0');
+    const iron = getNutrientByName('Iron (mg)');
+    const ironValue = iron.value && iron.value !== '-' ? iron.value : '0';
+    const ironDV = iron.dailyValuePercentage ? iron.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-iron').text(ironValue);
+    $('#nutrition-iron-dv').text(ironDV);
 
-    const potassium = getNutrient(11);
-    $('#nutrition-potassium').text(potassium.value || '0');
-    $('#nutrition-potassium-dv').text(potassium.dailyValue !== null && potassium.dailyValue !== undefined ? potassium.dailyValue : '0');
+    const potassium = getNutrientByName('Potassium (mg)');
+    const potassiumValue = potassium.value && potassium.value !== '-' ? potassium.value : '0';
+    const potassiumDV = potassium.dailyValuePercentage ? potassium.dailyValuePercentage.replace('%', '') : '0';
+    $('#nutrition-potassium').text(potassiumValue);
+    $('#nutrition-potassium-dv').text(potassiumDV);
 
     modal.removeAttr('hidden').fadeIn(300);
 
