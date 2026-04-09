@@ -697,7 +697,6 @@ var IMSintegration;
                 for (var i = 0; i < brand.stations.length; i++) {
                     var normalizedPattern = _this.normalizeForMatching(brand.stations[i]);
                     if (normalized === normalizedPattern) {
-                        console.log('✅ MATCH FOUND:', brand.stations[i], '(key:', brandKey + ')');
                         return {
                             matchedStation: brand.stations[i],
                             brandKey: brandKey,
@@ -824,7 +823,6 @@ var IMSintegration;
                     .attr('src', brand.logoUrl)
                     .attr('alt', brand.displayName)
                     .on('error', function () {
-                        console.warn('Failed to load logo for ' + brand.displayName + ' from: ' + brand.logoUrl);
                         $(this).hide();
                         brandCard.append($('<div>').text(brand.displayName).css({
                             fontSize: '48px',
@@ -947,7 +945,6 @@ var IMSintegration;
                 var station = brand.stations[stationKey];
                 var cleanName = station.cleanedName || "Menu";
                 var sortIndex = typeof station.sortIndex === "number" ? station.sortIndex : Number.MAX_SAFE_INTEGER;
-                console.log('🔧 Processing station:', stationKey, '→ cleanName:', cleanName, 'items:', station.items.length);
 
                 if (!stationGroups[cleanName]) {
                     stationGroups[cleanName] = {

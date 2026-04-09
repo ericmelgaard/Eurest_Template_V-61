@@ -14,6 +14,7 @@
     <script type="text/javascript" src="dependencies/math.min.js"></script>
     <script type="text/javascript" src="dependencies/lodash.min.js"></script>
     <script type="text/javascript" src="dependencies/wandLib.js"></script>
+    <script type="text/javascript" src="js/imageStoreManager.js"></script>
     <script type="text/javascript" src="js/nutritionLabel.js"></script>
     <script type="text/javascript" src="js/integration.js"></script>
     <script type="text/javascript" src="js/brandManager.js"></script>
@@ -151,7 +152,7 @@
             <button class="floating-nav-btn floating-nav-home" aria-label="Go home">
                 <img src="./media/homebutton.png" alt="Home">
             </button>
-            <div id="vote-content-background" class="content-background">
+           <div id="vote-content-background" class="content-background">
                 <img src="">
             </div>
         </div>
@@ -212,15 +213,6 @@
         <div onclick="hideFallback()" class="fallback-wrapper">
             <img id="image" src="">
         </div>
-
-        <!-- Scroll to Top Button -->
-        <button class="nav-btn nav-scroll-top" aria-label="Scroll to top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="12" y1="19" x2="12" y2="5" />
-                <polyline points="5 12 12 5 19 12" />
-            </svg>
-        </button>
 
         <!-- Nutrition Modal -->
         <div id="item-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>

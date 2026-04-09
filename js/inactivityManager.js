@@ -3,6 +3,8 @@ const InactivityManager = (function() {
     warningDelay: 30000,
     countdownDuration: 10000,
     nutritionExtension: 30000,
+    activityEvents: ['touchstart', 'touchmove', 'mousemove'],
+    shouldTrackActivity: null,
     onTimeout: null,
     onWarning: null,
     onReset: null
@@ -20,7 +22,42 @@ const InactivityManager = (function() {
   let nutritionModalOpen = false;
   let nutritionExtensionApplied = false;
 
+  function shouldTrackActivity() {
+    if (typeof config.shouldTrackActivity === 'function') {
+      return !!config.shouldTrackActivity();
+    }
+    return true;
+  }
+
+  function handleUserActivity() {
+    if (!shouldTrackActivity()) {
+      return;
+    }
+    reset();
+  }
+
+  function bindActivityEvents() {
+    if (!Array.isArray(config.activityEvents)) {
+      return;
+    }
+
+    config.activityEvents.forEach((eventName) => {
+      document.addEventListener(eventName, handleUserActivity, { passive: true });
+    });
+  }
+
+  function unbindActivityEvents() {
+    if (!Array.isArray(config.activityEvents)) {
+      return;
+    }
+
+    config.activityEvents.forEach((eventName) => {
+      document.removeEventListener(eventName, handleUserActivity, { passive: true });
+    });
+  }
+
   function init(userConfig = {}) {
+    unbindActivityEvents();
     config = { ...DEFAULT_CONFIG, ...userConfig };
 
     modalElement = document.getElementById('inactivity-warning-modal');
@@ -33,6 +70,7 @@ const InactivityManager = (function() {
     }
 
     setupModalButtons();
+    bindActivityEvents();
     reset();
   }
 
@@ -195,6 +233,7 @@ const InactivityManager = (function() {
   }
 
   function destroy() {
+    unbindActivityEvents();
     clearAllTimers();
     hideModal();
     state = 'idle';

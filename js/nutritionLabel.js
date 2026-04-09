@@ -191,3 +191,16 @@ $(document).ready(function() {
         }
     });
 });
+
+function setupNutritionOverlayHandlers() {
+    $(document).off('click.menuNutritionGlobal').on('click.menuNutritionGlobal', '.menu-item-wrapper', function (e) {
+        if ($(e.target).closest('.goHome').length > 0) {
+            return;
+        }
+        e.stopPropagation();
+        var nutritionData = $(this).find('.item-wrapper').data('nutrition');
+        if (nutritionData && typeof openNutritionModal === 'function') {
+            openNutritionModal(nutritionData);
+        }
+    });
+}

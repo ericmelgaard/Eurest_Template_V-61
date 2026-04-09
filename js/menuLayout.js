@@ -9,23 +9,18 @@ var IMSintegration;
             this.timeOuts = [];
             this.playlist = false;
             this.isRotating = false;
-            this.inactivityTimer = null;
-            this.inactivityTimeout = 30000; // 30 seconds default
              this.navigationHistory = [];
-            this.isScrolling = false;
-            this.scrollTimeout = null;
-            this.lastScrollTop = 0;
         }
         MenuLayout.prototype.init = function (IMSItems, IMSProducts, IMSSettings, integrationItems, API) {
             var _this = this;
             if (!API) {
                 return;
             }
+            // Optional image-driven content injector. Remove this call if the template does not use imageStoreManager.
             try {
-                this.handleSettings(IMSSettings);
+                this.initImageStoreManager();
             } catch (e) {
-                console.error("Error in MenuLayout handleSettings: ", e);
-                IMSintegration.Integration.prototype.showConnect(true, "Red", "handleSettings", e, "error");
+                console.error("Error initializing image store manager: ", e);
             }
             try {
                 this.injectPricing(IMSProducts);
@@ -62,7 +57,7 @@ var IMSintegration;
             // }
 
             try {
-                setupNutritionOverlayHandlers(nutritionLabelTemplate);
+                setupNutritionOverlayHandlers();
             } catch (e) {
                 console.error("Error in MenuLayout setupNutritionOverlayHandlers: ", e);
             }
@@ -73,74 +68,14 @@ var IMSintegration;
                 console.error("Error initializing InactivityManager: ", e);
             }
         };
-        MenuLayout.prototype.handleSettings = function (IMSSettings) {
-            var _this = this;
-            var happening_page_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("calendar") >= 0 && item.fileType === "image";
-            });
-
-            if (happening_page_img.length > 0) {
-                $("#card-happening").show();
-                // Use the first matching image's fullPath as the src
-                $("#happening_page .cms-image img").attr("src", happening_page_img[0].fullPath);
-                console.log("Set #happening_page src to:", happening_page_img[0].fullPath);
-            } else {
-                $("#card-happening").hide();
+        MenuLayout.prototype.initImageStoreManager = function () {
+            if (!window.ImageStoreManager || typeof window.ImageStoreManager.init !== "function") {
+                return;
             }
-
-            var connectwithus_page_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("connect") >= 0 && item.fileType === "image";
-            });
-            if (connectwithus_page_img.length > 0) {
-                $("#card-connectwithus").show();
-                // Use the first matching image's fullPath as the src
-                $("#connectwithus_page .cms-image img").attr("src", connectwithus_page_img[0].fullPath);
-                console.log("Set #connectwithus_page src to:", connectwithus_page_img[0].fullPath);
-            } else {
-                $("#card-connectwithus").hide();
-            }
-
-            var vote_page_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("vote") >= 0 && item.fileType === "image";
-            });
-            if (vote_page_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#vote_page .cms-image img").attr("src", vote_page_img[0].fullPath);
-                console.log("Set #vote_page src to:", vote_page_img[0].fullPath);
-            } else {
-                $("#card-vote").hide();
-            }
-
-            var ambassador_page_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("ambassador") >= 0 && item.fileType === "image";
-            });
-            if (ambassador_page_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#ambassador_page .cms-image img").attr("src", ambassador_page_img[0].fullPath);
-                console.log("Set #ambassador_page src to:", ambassador_page_img[0].fullPath);
-            } else {
-                $("#card-ambassador").hide();
-            }
-
-            var foodwithpurpose_page_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("upcycled") >= 0 && item.fileType === "image";
-            });
-            if (foodwithpurpose_page_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#foodwithpurpose_page .cms-image img").attr("src", foodwithpurpose_page_img[0].fullPath);
-                console.log("Set #foodwithpurpose_page src to:", foodwithpurpose_page_img[0].fullPath);
-            } else {
-                $("#card-foodwithpurpose").hide();
-            }
+            window.ImageStoreManager.init();
         };
         MenuLayout.prototype.handleLayout = function (IMSSettings) {
             var _this = this;
-            // Set up inactivity timer
-            this.setupInactivityTimer();
-
-            // Set up scroll detection
-            this.setupScrollDetection();
-
             // Set up navigation buttons
             this.setupNavigationButtons();
 
@@ -148,50 +83,42 @@ var IMSintegration;
             $('#card-weeklymenu').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('weekly_menu_page');
-                _this.resetInactivityTimer();
             });
 
             // Feature cards - navigate to static content pages
             $('#card-happening').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('happening_page');
-                _this.resetInactivityTimer();
             });
 
             $('#card-vote').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('vote_page');
-                _this.resetInactivityTimer();
             });
 
             $('#card-fit').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('fit_page');
-                _this.resetInactivityTimer();
             });
 
             $('#card-mezze').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('mezze_page');
-                _this.resetInactivityTimer();
             });
 
             $('#card-connectwithus').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('connectwithus_page');
-                _this.resetInactivityTimer();
             });
 
             $('#card-ambassador').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('ambassador_page');
-                _this.resetInactivityTimer();
             });
 
             $('#card-foodwithpurpose').on('click', function (e) {
                 e.stopPropagation();
                 _this.navigateToPage('foodwithpurpose_page');
-                _this.resetInactivityTimer();
             });
 
             return true;
@@ -218,24 +145,6 @@ var IMSintegration;
             });
         };
 
-        MenuLayout.prototype.setupInactivityTimer = function () {
-            var _this = this;
-
-            // Events that should reset the inactivity timer
-            // Removed 'click' and 'mousedown' to prevent interference with actual click handlers
-            var events = ['touchstart', 'touchmove', 'mousemove'];
-
-            // Add event listeners to document for all activity
-            events.forEach(function (event) {
-                $(document).on(event, function () {
-                    _this.resetInactivityTimer();
-                });
-            });
-
-            // Start the initial timer
-            this.resetInactivityTimer();
-        };
-
         MenuLayout.prototype.initInactivityManager = function () {
             var _this = this;
 
@@ -244,6 +153,10 @@ var IMSintegration;
                     warningDelay: 30000,
                     countdownDuration: 10000,
                     nutritionExtension: 30000,
+                    activityEvents: ['click', 'touchstart', 'touchmove', 'mousemove'],
+                    shouldTrackActivity: function () {
+                        return $('.home:visible').length === 0;
+                    },
                     onTimeout: function () {
                         _this.returnHome();
                     },
@@ -259,25 +172,6 @@ var IMSintegration;
                 InactivityManager.pause();
             } else {
                 console.error('InactivityManager not found');
-            }
-        };
-
-        MenuLayout.prototype.resetInactivityTimer = function () {
-            // Don't reset timer if on home screen
-            if ($('.home').is(':visible')) {
-                return;
-            }
-
-            if (typeof InactivityManager !== 'undefined') {
-                InactivityManager.reset();
-            } else {
-                var _this = this;
-                if (this.inactivityTimer) {
-                    clearTimeout(this.inactivityTimer);
-                }
-                this.inactivityTimer = setTimeout(function () {
-                    _this.returnHome();
-                }, this.inactivityTimeout);
             }
         };
 
@@ -327,29 +221,14 @@ var IMSintegration;
             $(document).on('click', '.floating-nav-home', function (e) {
                 e.stopPropagation();
                 _this.navigateToWelcome();
-                _this.resetInactivityTimer();
             });
 
             // Edge back button - returns to menu selection from brand pages
             $(document).on('click', '.edge-nav-back', function (e) {
                 e.stopPropagation();
                 _this.navigateBack();
-                _this.resetInactivityTimer();
             });
 
-            // Home button - returns to welcome screen from any page
-            $(document).on('click', '.floating-nav-home', function (e) {
-                e.stopPropagation();
-                _this.navigateToWelcome();
-                _this.resetInactivityTimer();
-            });
-
-            // Scroll to top button
-            $('.nav-scroll-top').on('click', function (e) {
-                e.stopPropagation();
-                _this.scrollToTop();
-                _this.resetInactivityTimer();
-            });
         };
 
         MenuLayout.prototype.navigateToPage = function (pageId) {
@@ -423,11 +302,6 @@ var IMSintegration;
 
             // Scroll to top
             window.scrollTo(0, 0);
-
-            // Pause inactivity timer when on home screen
-            if (typeof InactivityManager !== 'undefined') {
-                InactivityManager.pause();
-            }
         };
 
         MenuLayout.prototype.updateNavigationButtons = function () {
@@ -442,74 +316,12 @@ var IMSintegration;
                 return;
             }
 
-            if (currentPage === 'weekly_menu_page') {
-                // On weekly menu page - show home button
+            if (currentPage) {
+                // On any non-home page - show home button
                 $('.floating-nav-home').show();
-            } else if (currentPage) {
-                // On any page - always show home button
-                $('.floating-nav-home').show();
-
-                // Show back button on static pages (not on brand menus - they have their own)
-                if (currentPage === 'happening_page' || currentPage === 'beverage_page' ||
-                    currentPage === 'youpickit_page' || currentPage === 'fit_page' ||
-                    currentPage === 'mezze_page') {
-                    // Static pages only have home button, no back button needed
-                }
             }
         };
 
-        MenuLayout.prototype.setupScrollDetection = function () {
-            var _this = this;
-            var scrollThreshold = 300;
-            var hideDelay = 1500;
-
-            _this.lastScrollTop = 0;
-
-            // Wait for DOM to be ready, then attach to all .section-wrapper elements
-            setTimeout(function() {
-                var wrappers = $('.section-wrapper');
-                console.log('Found section wrappers:', wrappers.length);
-
-                wrappers.each(function() {
-                    console.log('Attaching scroll to:', this);
-                });
-
-                wrappers.on('scroll', function () {
-                    var scrollTop = $(this).scrollTop();
-                    var scrollButton = $('.nav-scroll-top');
-
-                    console.log('Scroll detected! scrollTop:', scrollTop);
-
-                    // Clear existing timeout
-                    if (_this.scrollTimeout) {
-                        clearTimeout(_this.scrollTimeout);
-                    }
-
-                    // Check if we're scrolling up or down
-                    var isScrollingUp = scrollTop < _this.lastScrollTop;
-
-                    if (scrollTop > scrollThreshold && isScrollingUp) {
-                        // Scrolling up past threshold - show button
-                        console.log('Showing scroll button');
-                        scrollButton.addClass('visible');
-
-                        // Hide after stop scrolling delay
-                        _this.scrollTimeout = setTimeout(function () {
-                            scrollButton.removeClass('visible');
-                        }, hideDelay);
-                    } else {
-                        // Scrolling down or near top - hide button
-                        scrollButton.removeClass('visible');
-                    }
-
-                    _this.lastScrollTop = scrollTop;
-                });
-            }, 1000);
-        };
-
-        MenuLayout.prototype.scrollToTop = function () {
-            $('.section-wrapper').animate({ scrollTop: 0 }, 600, 'swing');
-        };
         MenuLayout.prototype.rotateEles = function () {
             if (this.isRotating) { return; }
 

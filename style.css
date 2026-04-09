@@ -96,6 +96,11 @@ min-width: 900px;;
     width: 1080px;
 }
 
+.vote-iframe {
+    height: 1920px;
+    width: 1080px;
+}
+
 
 .cards-grid {
 display: flex;
@@ -1092,33 +1097,6 @@ display: flex;
 
 #weekly_menu_page {
     padding-top: 40px;
-}
-
-/* Scroll to top button */
-.nav-scroll-top {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    width: 70px;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.nav-scroll-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.nav-scroll-top:hover {
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 
