@@ -25,7 +25,8 @@ function openNutritionModal(itemData) {
     };
 
     $('#modal-title').text(itemData.name || '');
-    $('#modal-price').text(itemData.price || '');
+    const price = `${itemData.price ?? ''}`.trim();
+    $('#modal-price').text(price === '$0.00' || price === '0' ? '' : price);
     $('#modal-calories').text(itemData.calories ? `${itemData.calories} cal` : '');
     $('#modal-serving').text(itemData.portion || '');
 
@@ -54,7 +55,7 @@ function openNutritionModal(itemData) {
     console.log('Calories nutrient:', calories);
     $('#nutrition-calories').text(calories && calories.value ? calories.value : '0');
 
-    const totalFat = getNutrientByName('Fat (g)');
+    const totalFat = getNutrientByName('Total Fat (g)');
     console.log('Total Fat nutrient:', totalFat);
     const totalFatValue = totalFat && totalFat.value && totalFat.value !== '-' ? totalFat.value : '0';
     const totalFatDV = totalFat && totalFat.dailyValuePercentage ? totalFat.dailyValuePercentage.replace('%', '') : '0';
@@ -83,7 +84,7 @@ function openNutritionModal(itemData) {
     $('#nutrition-sodium').text(sodiumValue);
     $('#nutrition-sodium-dv').text(sodiumDV);
 
-    const carbs = getNutrientByName('Carbohydrate (g)');
+    const carbs = getNutrientByName('Total Carbohydrates (g)');
     const carbsValue = carbs && carbs.value && carbs.value !== '-' ? carbs.value : '0';
     const carbsDV = carbs && carbs.dailyValuePercentage ? carbs.dailyValuePercentage.replace('%', '') : '0';
     $('#nutrition-carbs').text(carbsValue);

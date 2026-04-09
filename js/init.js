@@ -9,17 +9,17 @@ var version = 60;
 var isUsingSettings = true;
 var fullPreview = true;
 //leave settingKey blank for co-branded assets
-var settingKey = "N2RiZDYxZTMtMjEyZS00MjE5LWFjNzktZGI3MTU4YzAwYTgy";
-var settingId_PartnerAPI = ["349"];
-var settingsId_Brand = ["350"]; //Sap Code / Business Unit
-var settingId_PartnerSite = ["351"]; //Venue / Location
+var settingKey = "ZDE0OTNkMjItNGE5My00ZjQ5LWE4ZDMtMzI2NDBhMGZlYjYw";
+var settingId_PartnerAPI = ["432"];
+var settingsId_Brand = ["433"]; //Sap Code / Business Unit
+var settingId_PartnerSite = ["434"]; //Venue / Location
 //allow offline operation if specific data is not required.
 var allowMenusOffline = false;
 //for legacy brands with rotated content
 var assetRotation = 0; //in degrees 0 or 270
 //webtrtion config
 var mealStation = "";
-var mealPeriod = "Lunch";
+var mealPeriod = "";
 var menuType = "";
 var includeRecipes = false;
 var showPrice = true;
@@ -43,17 +43,17 @@ var Asset_ID = "";
 var Display_ID = "";
 var Display_Name = "";
 var Daypart_ID = "";
-var Daypart_Name = "Lunch";
+var Daypart_Name = "";
 var Store_ID = "";
-var Store_Key = "6091";
+var Store_Key = "7842";
 var Zone_ID = "";
 var Duration = "";
 var Partner_API = "webtrition";
-var Brand = "44226";
-var Establishment = "35220";
-var apiKey = "N2RiZDYxZTMtMjEyZS00MjE5LWFjNzktZGI3MTU4YzAwYTgy";
+var Brand = "";
+var Establishment = "";
+var apiKey = "";
 //yyyy-mm-dd ex.2026-02-23
-var dateToRequest = "";
+var dateToRequest = "2026-04-06";
 var devSiteKeys = ["6091", "4873", "4907", "5448", "4756", "6820"];
 //end development & preview values
 //global scope variables

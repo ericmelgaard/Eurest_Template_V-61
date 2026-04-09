@@ -695,8 +695,8 @@ var IMSintegration;
 //helper functions
 var validateItems = function (items, station, period, type) {
     var currentDay = currentTime();
-    station = station || mealStation|| AssetConfiguration.Display || "";
-    period = period || mealPeriod || AssetConfiguration.Daypart || "";
+    // station = station || mealStation|| AssetConfiguration.Display || "";
+    // period = period || mealPeriod || AssetConfiguration.Daypart || "";
     type = type || menuType || "";
     // Validate dates
     items.forEach(function (each) {

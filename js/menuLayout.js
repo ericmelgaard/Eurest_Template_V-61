@@ -11,13 +11,7 @@ var IMSintegration;
             this.isRotating = false;
             this.inactivityTimer = null;
             this.inactivityTimeout = 30000; // 30 seconds default
-            this.breakfast_overlay = null;
-            this.tacocantina_overlay = null;
-            this.bandb_overlay = null;
-            this.roost_overlay = null;
-            this.inspiredkitchen_overlay = null;
-            this.flame_overlay = null;
-            this.navigationHistory = [];
+             this.navigationHistory = [];
             this.isScrolling = false;
             this.scrollTimeout = null;
             this.lastScrollTop = 0;
@@ -52,7 +46,7 @@ var IMSintegration;
                 IMSintegration.Integration.prototype.showConnect(true, "Red", "handleLayout", e, "error");
             }
             try {
-                var filteredIntegrationItems = validateItems(integrationItems);
+                var filteredIntegrationItems = validateItems(integrationItems, "", "", "");
                 brandManager.init(filteredIntegrationItems, null);
             } catch (e) {
                 console.error("Error in BrandManager init: ", e);
@@ -81,119 +75,62 @@ var IMSintegration;
         };
         MenuLayout.prototype.handleSettings = function (IMSSettings) {
             var _this = this;
-            var piccola_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("piccolaitalia") >= 0 && item.fileType === "image";
+            var happening_page_img = imageStore.filter(function (item) {
+                return item.fileName.toLowerCase().indexOf("calendar") >= 0 && item.fileType === "image";
             });
 
-            if (piccola_img.length > 0) {
+            if (happening_page_img.length > 0) {
+                $("#card-happening").show();
                 // Use the first matching image's fullPath as the src
-                $("#piccolaitalia_page .background img").attr("src", piccola_img[0].fullPath);
-                console.log("Set #piccolaitalia src to:", piccola_img[0].fullPath);
-            }
-
-            var graze_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("graze") >= 0 && item.fileType === "image";
-            });
-            if (graze_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#graze_page .background img").attr("src", graze_img[0].fullPath);
-                console.log("Set #graze src to:", graze_img[0].fullPath);
-            }
-
-            var bigcity_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("bigcity") >= 0 && item.fileType === "image";
-            });
-            if (bigcity_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#bigcity_page .background img").attr("src", bigcity_img[0].fullPath);
-                console.log("Set #bigcity src to:", bigcity_img[0].fullPath);
-            }
-
-            var mashup_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("mashup") >= 0 && item.fileType === "image";
-            });
-            if (mashup_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#mashup_page .background img").attr("src", mashup_img[0].fullPath);
-                console.log("Set #mashup src to:", mashup_img[0].fullPath);
-            }
-
-            var sipsbites_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("sipsbites") >= 0 && item.fileType === "image";
-            });
-            if (sipsbites_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#sipsbites_page .background img").attr("src", sipsbites_img[0].fullPath);
-                console.log("Set #sipsbites src to:", sipsbites_img[0].fullPath);
-            }
-
-            var breajfast_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("breakfast") >= 0 && item.fileType === "image";
-            });
-            if (breajfast_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#bfast_page .background img").attr("src", breajfast_img[0].fullPath);
-                _this.breakfast_overlay = true;
-                console.log("Set #breakfast src to:", breajfast_img[0].fullPath);
+                $("#happening_page .cms-image img").attr("src", happening_page_img[0].fullPath);
+                console.log("Set #happening_page src to:", happening_page_img[0].fullPath);
             } else {
-                _this.breakfast_overlay = false;
+                $("#card-happening").hide();
             }
 
-            var tacocantina_overlay = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("tacocantina") >= 0 && item.fileType === "image";
+            var connectwithus_page_img = imageStore.filter(function (item) {
+                return item.fileName.toLowerCase().indexOf("connect") >= 0 && item.fileType === "image";
             });
-            if (tacocantina_overlay.length > 0) {
+            if (connectwithus_page_img.length > 0) {
+                $("#card-connectwithus").show();
                 // Use the first matching image's fullPath as the src
-                $("#tacocantina_page .background img").attr("src", tacocantina_overlay[0].fullPath);
-                _this.tacocantina_overlay = true;
-                console.log("Set #tacocantina src to:", tacocantina_overlay[0].fullPath);
+                $("#connectwithus_page .cms-image img").attr("src", connectwithus_page_img[0].fullPath);
+                console.log("Set #connectwithus_page src to:", connectwithus_page_img[0].fullPath);
             } else {
-                _this.tacocantina_overlay = false;
+                $("#card-connectwithus").hide();
             }
 
-            var bandb_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("butcherbaker") >= 0 && item.fileType === "image";
+            var vote_page_img = imageStore.filter(function (item) {
+                return item.fileName.toLowerCase().indexOf("vote") >= 0 && item.fileType === "image";
             });
-            if (bandb_img.length > 0) {
+            if (vote_page_img.length > 0) {
                 // Use the first matching image's fullPath as the src
-                $("#butcherbaker_page .background img").attr("src", bandb_img[0].fullPath);
-                _this.bandb_overlay = true;
-                console.log("Set #butcherbaker src to:", bandb_img[0].fullPath);
+                $("#vote_page .cms-image img").attr("src", vote_page_img[0].fullPath);
+                console.log("Set #vote_page src to:", vote_page_img[0].fullPath);
             } else {
-                _this.bandb_overlay = false;
+                $("#card-vote").hide();
             }
-            var roost_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("roost") >= 0 && item.fileType === "image";
+
+            var ambassador_page_img = imageStore.filter(function (item) {
+                return item.fileName.toLowerCase().indexOf("ambassador") >= 0 && item.fileType === "image";
             });
-            if (roost_img.length > 0) {
+            if (ambassador_page_img.length > 0) {
                 // Use the first matching image's fullPath as the src
-                $("#roost_page .background img").attr("src", roost_img[0].fullPath);
-                _this.roost_overlay = true;
-                console.log("Set #roost src to:", roost_img[0].fullPath);
+                $("#ambassador_page .cms-image img").attr("src", ambassador_page_img[0].fullPath);
+                console.log("Set #ambassador_page src to:", ambassador_page_img[0].fullPath);
             } else {
-                _this.roost_overlay = false;
+                $("#card-ambassador").hide();
             }
-            var inspiredkitchen_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("inspiredkitchen") >= 0 && item.fileType === "image";
+
+            var foodwithpurpose_page_img = imageStore.filter(function (item) {
+                return item.fileName.toLowerCase().indexOf("upcycled") >= 0 && item.fileType === "image";
             });
-            if (inspiredkitchen_img.length > 0) {
+            if (foodwithpurpose_page_img.length > 0) {
                 // Use the first matching image's fullPath as the src
-                $("#inspiredkitchen_page .background img").attr("src", inspiredkitchen_img[0].fullPath);
-                _this.inspiredkitchen_overlay = true;
-                console.log("Set #inspiredkitchen src to:", inspiredkitchen_img[0].fullPath);
+                $("#foodwithpurpose_page .cms-image img").attr("src", foodwithpurpose_page_img[0].fullPath);
+                console.log("Set #foodwithpurpose_page src to:", foodwithpurpose_page_img[0].fullPath);
             } else {
-                _this.inspiredkitchen_overlay = false;
-            }
-            var flame_img = imageStore.filter(function (item) {
-                return item.fileName.toLowerCase().indexOf("flame") >= 0 && item.fileType === "image";
-            });
-            if (flame_img.length > 0) {
-                // Use the first matching image's fullPath as the src
-                $("#flame_page .background img").attr("src", flame_img[0].fullPath);
-                _this.flame_overlay = true;
-                console.log("Set #flame src to:", flame_img[0].fullPath);
-            } else {
-                _this.flame_overlay = false;
+                $("#card-foodwithpurpose").hide();
             }
         };
         MenuLayout.prototype.handleLayout = function (IMSSettings) {
@@ -221,15 +158,9 @@ var IMSintegration;
                 _this.resetInactivityTimer();
             });
 
-            $('#card-beverage').on('click', function (e) {
+            $('#card-vote').on('click', function (e) {
                 e.stopPropagation();
-                _this.navigateToPage('beverage_page');
-                _this.resetInactivityTimer();
-            });
-
-            $('#card-youpickit').on('click', function (e) {
-                e.stopPropagation();
-                _this.navigateToPage('youpickit_page');
+                _this.navigateToPage('vote_page');
                 _this.resetInactivityTimer();
             });
 

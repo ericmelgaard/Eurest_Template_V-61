@@ -10,132 +10,446 @@ var IMSintegration;
             this.brandConfig = {
                 "bibimbap": {
                     displayName: "Bibimbap",
+                    logoUrl: this.logoBaseUrl + "bibimbap.png",
                     stations: [
-                        "bibimbap - byo",
-                        "bibimbap - express"
+                        "bibimbap - daily features",
+                        "bibimbap - choose your protein",
+                        "bibimbap - select your base",
+                        "bibimbap - add a sauce",
+                        "bibimbap - top with vegetables",
+                        "bibimbap - add a side"
                     ]
                 },
                 "bigcitybbq": {
                     displayName: "Big City BBQ",
+                    logoUrl: this.logoBaseUrl + "bigcitybbq.png",
                     stations: [
-                        "big city bbq - core + sides"
+                        "big city bbq - daily features",
+                        "big city bbq - protein",
+                        "big city bbq - add a side",
+                        "big city bbq - sauces"
                     ]
                 },
                 "bokchoy": {
                     displayName: "Bok Choy",
+                    logoUrl: this.logoBaseUrl + "bokchoy.png",
                     stations: [
-                        "bok choy - byo",
-                        "bok choy - express"
+                        "bok choy - express",
+                        "bok choy - byo"
+                    ]
+                },
+                "breakfastbakery": {
+                    displayName: "Breakfast Bakery",
+                    logoUrl: this.logoBaseUrl + "breakfastbakery.png",
+                    stations: [
+                        "breakfast bakery - daily features",
+                        "breakfast bakery - a la carte"
+                    ]
+                },
+                "breakfastbyopowerbowl": {
+                    displayName: "Breakfast BYO Power Bowl",
+                    logoUrl: this.logoBaseUrl + "breakfastbyopowerbowl.png",
+                    stations: [
+                        "breakfast power bowl - daily features",
+                        "breakfast byo power bowl - choose your base",
+                        "breakfast byo power bowl - choose your add ins",
+                        "breakfast byo power bowl - choose your toppings"
+                    ]
+                },
+                "breakfastbyotoastbar": {
+                    displayName: "Breakfast BYO Toast Bar",
+                    logoUrl: this.logoBaseUrl + "breakfastbyotoastbar.png",
+                    stations: [
+                        "breakfast toast - choose your base",
+                        "breakfast toast - add a spread",
+                        "breakfast toast - add toppers"
+                    ]
+                },
+                "breakfastcharcuterie": {
+                    displayName: "Breakfast Charcuterie",
+                    logoUrl: this.logoBaseUrl + "breakfastcharcuterie.png",
+                    stations: [
+                        "breakfast charcuterie - choose your proteins",
+                        "breakfast charcuterie - add fruit and vegetables",
+                        "breakfast charcuterie - add nuts, dips and breads"
+                    ]
+                },
+                "breakfastdeli": {
+                    displayName: "Breakfast Deli",
+                    logoUrl: this.logoBaseUrl + "breakfastdeli.png",
+                    stations: [
+                        "breakfast deli - daily features",
+                        "breakfast deli - core",
+                        "breakfast deli - sides"
+                    ]
+                },
+                "breakfastgrabandgo": {
+                    displayName: "Breakfast Grab & Go",
+                    logoUrl: this.logoBaseUrl + "breakfastgrabandgo.png",
+                    stations: [
+                        "breakfast grab and go - daily features",
+                        "breakfast grab and go - express"
+                    ]
+                },
+                "breakfastgrill": {
+                    displayName: "Breakfast Grill",
+                    logoUrl: this.logoBaseUrl + "breakfastgrill.png",
+                    stations: [
+                        "breakfast grill - daily features",
+                        "breakfast grill - core sandwiches",
+                        "breakfast grill - sides",
+                        "breakfast grill - scrambled, wrapped or hashed",
+                        "breakfast grill - choose your style",
+                        "breakfast grill - add a side"
+                    ]
+                },
+                "breakfasthotcereal": {
+                    displayName: "Breakfast Hot Cereal",
+                    logoUrl: this.logoBaseUrl + "breakfasthotcereal.png",
+                    stations: [
+                        "breakfast hot cereal - daily features",
+                        "breakfast hot cereal - express"
+                    ]
+                },
+                "breakfasthotcoldcerealbar": {
+                    displayName: "Breakfast Hot & Cold Cereal Bar",
+                    logoUrl: this.logoBaseUrl + "breakfasthotcoldcerealbar.png",
+                    stations: [
+                        "breakfast cereal - choose your cereal",
+                        "breakfast cereal - choose your add ins",
+                        "breakfast cereal - add toppers",
+                        "breakfast cereal - add sauce or milk"
+                    ]
+                },
+                "breakfasthotgraze": {
+                    displayName: "Breakfast Hot Graze",
+                    logoUrl: this.logoBaseUrl + "breakfasthotgraze.png",
+                    stations: [
+                        "breakfast hot graze - daily features",
+                        "breakfast hot graze - a la carte"
+                    ]
+                },
+                "breakfastpizza": {
+                    displayName: "Breakfast Pizza",
+                    logoUrl: this.logoBaseUrl + "breakfastpizza.png",
+                    stations: [
+                        "breakfast pizza - daily features",
+                        "breakfast pizza - core",
+                        "breakfast pizza - sides"
                     ]
                 },
                 "butcherbaker": {
                     displayName: "Butcher & Baker",
+                    logoUrl: this.logoBaseUrl + "butcherbaker.png",
                     stations: [
-                        "butcher & baker - byo omelet",
-                        "butcher & baker - daily features"
+                        "butcher & baker - daily features",
+                        "butcher & baker - express",
+                        "butcher & baker - choose your protein",
+                        "butcher & baker - choose your bread",
+                        "butcher & baker - add cheese",
+                        "butcher & baker - add toppings",
+                        "butcher & baker - add a spread",
+                        "butcher & baker - add a side",
+                        "b+b subs - daily features",
+                        "b+b - sub rolls",
+                        "b+b - proteins",
+                        "b+b - toppings",
+                        "b+b - sauces and spreads",
+                        "b+b - something extra",
+                        "boxed - daily features",
+                        "boxed - start with meat and cheese",
+                        "boxed - pick your accompaniments",
+                        "boxed - complete your box"
+                    ]
+                },
+                "chefstable": {
+                    displayName: "Chef's Table",
+                    logoUrl: this.logoBaseUrl + "chefstable.png",
+                    stations: [
+                        "chefs table - daily features"
+                    ]
+                },
+                "coolchicks": {
+                    displayName: "Cool Chicks",
+                    logoUrl: this.logoBaseUrl + "coolchicks.png",
+                    stations: [
+                        "cool chix - daily features",
+                        "cool chix - crispy or grilled",
+                        "cool chix - choose your sides",
+                        "cool chix - something extra"
                     ]
                 },
                 "crave": {
                     displayName: "Crave",
+                    logoUrl: this.logoBaseUrl + "crave.png",
                     stations: [
-                        "crave - byo",
-                        "crave - daily features"
+                        "crave - daily features",
+                        "crave - byo"
                     ]
                 },
                 "create": {
                     displayName: "Create",
+                    logoUrl: this.logoBaseUrl + "create.png",
                     stations: [
-                        "create - byo",
-                        "create - sides"
+                        "create - daily features",
+                        "create - step 1",
+                        "create - step 2",
+                        "create - step 3",
+                        "create - step 4"
                     ]
                 },
                 "crisp": {
                     displayName: "Crisp",
+                    logoUrl: this.logoBaseUrl + "crisp.png",
                     stations: [
-                        "crisp - byo",
-                        "crisp - sides"
+                        "crisp - daily features",
+                        "crisp - express"
+                    ]
+                },
+                "dhabanorth": {
+                    displayName: "Dhaba North",
+                    logoUrl: this.logoBaseUrl + "dhabanorth.png",
+                    stations: [
+                        "dhaba north - daily features",
+                        "dhaba north - choose your side",
+                        "dhaba north - choose your rice"
+                    ]
+                },
+                "dhabasouth": {
+                    displayName: "Dhaba South",
+                    logoUrl: this.logoBaseUrl + "dhabasouth.png",
+                    stations: [
+                        "dhaba south - daily features",
+                        "dhaba south - choose your side",
+                        "dhaba south - choose your rice"
+                    ]
+                },
+                "dhabatikka": {
+                    displayName: "Dhaba Tikka",
+                    logoUrl: this.logoBaseUrl + "dhabatikka.png",
+                    stations: [
+                        "dhaba - daily features",
+                        "dhaba - choose your style",
+                        "dhaba - add protein",
+                        "dhaba - top it",
+                        "dhaba - add flavor"
                     ]
                 },
                 "earthbowl": {
                     displayName: "Earth Bowl",
+                    logoUrl: this.logoBaseUrl + "earthbowl.png",
                     stations: [
-                        "earth bowl - byo",
-                        "earth bowl - express"
+                        "earth bowl - daily features",
+                        "earth bowl - start with a base",
+                        "earth bowl - top it",
+                        "earth bowl - add flavor",
+                        "earth bowl - something extra"
                     ]
                 },
                 "elmollete": {
                     displayName: "El Mollete",
+                    logoUrl: this.logoBaseUrl + "elmollete.png",
                     stations: [
-                        "el mollete - byo",
-                        "el mollete - express"
+                        "el mollete - express",
+                        "el mollete - byo"
+                    ]
+                },
+                "fishandchipshop": {
+                    displayName: "Fish & Chip Shop",
+                    logoUrl: this.logoBaseUrl + "fishandchipshop.png",
+                    stations: [
+                        "fish and chip shop - daily features",
+                        "fish and chip shop - something extra"
                     ]
                 },
                 "fishmarket": {
                     displayName: "Fish Market",
+                    logoUrl: this.logoBaseUrl + "fishmarket.png",
                     stations: [
-                        "fish market - byo",
-                        "fish market - daily features"
+                        "fish market - daily features",
+                        "fish market - choose your seafood",
+                        "fish market - add a side",
+                        "fish market - add a sauce"
                     ]
                 },
                 "flame": {
                     displayName: "Flame",
+                    logoUrl: this.logoBaseUrl + "flame.png",
                     stations: [
-                        "flame - byo",
-                        "flame - daily features"
+                        "flame - daily features",
+                        "flame - express",
+                        "flame - choose your protein",
+                        "flame - choose your style",
+                        "flame - add cheese",
+                        "flame - add your toppings",
+                        "flame - core options",
+                        "flame - add a side",
+                        "flame breakfast - daily features",
+                        "flame breakfast - eggs your way",
+                        "flame breakfast - breakfast sandwiches",
+                        "flame breakfast - house favorites",
+                        "flame breakfast - simply breakfast plate",
+                        "flame breakfast omelet - choose your eggs",
+                        "flame breakfast omelet - choose your vegetables",
+                        "flame breakfast omelet - pick your cheese",
+                        "flame breakfast omelet - choose your protein",
+                        "flame breakfast - from the griddle",
+                        "flame breakfast - griddle toppings"
+                    ]
+                },
+                "flychix": {
+                    displayName: "Fly Chix",
+                    logoUrl: this.logoBaseUrl + "flychix.png",
+                    stations: [
+                        "fly chix - daily features",
+                        "fly chix - choose your meal",
+                        "fly chix - choose your flavor",
+                        "fly chix - add a side",
+                        "fly chix - choose your dip",
+                        "fly chix - something extra"
+                    ]
+                },
+                "gingerrepublic": {
+                    displayName: "Ginger Republic",
+                    logoUrl: this.logoBaseUrl + "gingerrepublic.png",
+                    stations: [
+                        "ginger republic - daily features",
+                        "ginger republic - choose a side",
+                        "ginger republic - something extra"
+                    ]
+                },
+                "goodmoodmonday": {
+                    displayName: "Good Mood Monday",
+                    logoUrl: this.logoBaseUrl + "goodmoodmonday.png",
+                    stations: [
+                        "musical monday - daily features",
+                        "musical monday - choose your sauce",
+                        "musical monday - choose your base",
+                        "musical monday - choose your protein",
+                        "musical monday - choose your toppings",
+                        "musical monday - choose your dressing",
+                        "musical monday - something extra",
+                        "monday mash up - daily features",
+                        "golden monday - daily features",
+                        "golden monday - choose your side",
+                        "mocktail monday - daily features",
+                        "comfort monday - daily features"
                     ]
                 },
                 "graze": {
                     displayName: "Graze",
+                    logoUrl: this.logoBaseUrl + "graze.png",
                     stations: [
-                        "graze - byo",
                         "graze - daily features",
-                        "graze - sides"
+                        "graze - express"
+                    ]
+                },
+                "grillsandgreens": {
+                    displayName: "Grills & Greens",
+                    logoUrl: this.logoBaseUrl + "grillsandgreens.png",
+                    stations: [
+                        "grills & greens - daily features",
+                        "grills & greens - choose your style",
+                        "grills & greens - add protein",
+                        "grills & greens - top with dressing",
+                        "grills & greens - something extra"
+                    ]
+                },
+                "ifpigshadwings": {
+                    displayName: "If Pigs Had Wings",
+                    logoUrl: this.logoBaseUrl + "ifpigshadwings.png",
+                    stations: [
+                        "if pigs had wings - daily features",
+                        "if pigs had wings - choose your slaw",
+                        "if pigs had wings - choose your pickle",
+                        "if pigs had wings - something extra"
+                    ]
+                },
+                "islandeats": {
+                    displayName: "Island Eats",
+                    logoUrl: this.logoBaseUrl + "islandeats.png",
+                    stations: [
+                        "island eats - daily features",
+                        "island eats - pick two sides",
+                        "island eats - something extra"
                     ]
                 },
                 "justburgers": {
                     displayName: "Just Burgers",
+                    logoUrl: this.logoBaseUrl + "justburgers.png",
                     stations: [
-                        "just burgers - byo",
-                        "just burgers - express"
-                    ]
+                        "just burgers - express",
+                        "just burgers - byo"
+                       ]
                 },
                 "kitchenco": {
-                    displayName: "Kitchen Co",
+                    displayName: "Kitchen & Co.",
+                    logoUrl: this.logoBaseUrl + "kitchenco.png",
                     stations: [
-                        "kitchen co - daily features",
-                        "kitchen co - sides"
+                        "kitchen & co. - daily features",
+                        "kitchen & co. - choose your entree",
+                        "kitchen & co. - choose your sides",
+                        "kitchen & co. - something extra"
                     ]
                 },
                 "leafladle": {
                     displayName: "Leaf & Ladle",
+                    logoUrl: this.logoBaseUrl + "leafladle.png",
                     stations: [
-                        "leaf & ladle - byo",
-                        "leaf & ladle - express"
+                        "leaf & ladle - express",
+                        "leaf & ladle - byo"
+                    ]
+                },
+                "littlelime": {
+                    displayName: "Little Lime",
+                    logoUrl: this.logoBaseUrl + "littlelime.png",
+                    stations: [
+                        "little lime - daily features",
+                        "little lime - something extra",
+                        "little lime - choose your base",
+                        "little lime - choose your protein",
+                        "little lime - toppings",
+                        "little lime - choose your dressing"
                     ]
                 },
                 "maccheeseology": {
-                    displayName: "Mac Cheeseology",
+                    displayName: "Mac & Cheesyology",
+                    logoUrl: this.logoBaseUrl + "maccheeseology.png",
                     stations: [
-                        "mac cheeseology - byo",
-                        "mac cheeseology - express"
+                        "mac & cheesyology - daily features bowls",
+                        "mac & cheesyology - daily features melts"
                     ]
                 },
                 "machuperu": {
                     displayName: "Machu Peru",
+                    logoUrl: this.logoBaseUrl + "machuperu.png",
                     stations: [
-                        "machu peru - byo",
-                        "machu peru - express"
+                        "machu peru - daily features",
+                        "machu peru - choose a base",
+                        "machu peru - choose a side",
+                        "machu peru - choose a sauce",
+                        "machu peru - add a dessert"
                     ]
                 },
                 "madetomelt": {
                     displayName: "Made to Melt",
+                    logoUrl: this.logoBaseUrl + "madetomelt.png",
                     stations: [
                         "made to melt - express",
                         "made to melt - a la carte"
                     ]
                 },
+                "madspice": {
+                    displayName: "Mad Spice",
+                    logoUrl: this.logoBaseUrl + "madspice.png",
+                    stations: [
+                        "mad spice - daily features",
+                        "mad spice - something extra"
+                    ]
+                },
                 "marketfresh": {
                     displayName: "Market Fresh",
+                    logoUrl: this.logoBaseUrl + "marketfresh.png",
                     stations: [
                         "market fresh - byo",
                         "market fresh - sides"
@@ -143,79 +457,144 @@ var IMSintegration;
                 },
                 "masala": {
                     displayName: "Masala",
+                    logoUrl: this.logoBaseUrl + "masala.png",
                     stations: [
-                        "masala - byo",
-                        "masala - express"
+                        "masala - express",
+                        "masala - byo"
                     ]
                 },
                 "meatballinc": {
-                    displayName: "Meatball Inc",
+                    displayName: "Meatball, Inc",
+                    logoUrl: this.logoBaseUrl + "meatballinc.png",
                     stations: [
-                        "meatball inc - express",
-                        "meatball inc - a la carte"
+                        "meatball, inc - daily features",
+                        "meatball, inc - sides"
                     ]
                 },
                 "mezze": {
                     displayName: "Mezze",
+                    logoUrl: this.logoBaseUrl + "mezze.png",
                     stations: [
-                        "mezze - byo",
-                        "mezze - express"
+                        "mezze bowl - daily features",
+                        "mezze bowl - select your base",
+                        "mezze bowl - choose your protein",
+                        "mezze bowl - add a spread",
+                        "mezze bowl - top it",
+                        "mezze bowl - finish it",
+                        "mezze gyros - daily features",
+                        "mezze gyros - select your base",
+                        "mezze gyros - choose your protein",
+                        "mezze gyros - top it",
+                        "mezze gyros - choose a side",
+                        "mezze gyros - extras",
+                        "mezze plate - daily features",
+                        "mezze plate - choose your protein",
+                        "mezze plate - choose your sides",
+                        "mezze plate - choose your spreads",
+                        "mezze plate - extras"
+                    ]
+                },
+                "mix": {
+                    displayName: "Mix",
+                    logoUrl: this.logoBaseUrl + "mix.png",
+                    stations: [
+                        "mix - daily features",
+                        "mix - chopped or wrapped",
+                        "mix - choose a style",
+                        "mix - add protein",
+                        "mix - something extra"
                     ]
                 },
                 "piccolaitalia": {
                     displayName: "Piccola Italia",
+                    logoUrl: this.logoBaseUrl + "piccolaitalia.png",
                     stations: [
+                        "piccola italia pasta - daily features",
                         "piccola italia pasta - choose your base",
                         "piccola italia pasta - choose your protein",
                         "piccola italia pasta - choose your toppings",
                         "piccola italia pasta - add a side",
-                        "piccola italia pasta - daily features",
+                        "piccola italia pizza - daily features",
+                        "piccola italia pizza - personal pizza",
+                        "piccola italia pizza - by the slice",
                         "piccola italia pizza - choose your base",
                         "piccola italia pizza - choose your protein",
                         "piccola italia pizza - choose your toppings",
-                        "piccola italia pizza - add a side",
-                        "piccola italia pizza - daily features",
-                        "piccola italia pizza - by the slice",
-                        "piccola italia pizza - personal pizza"
+                        "piccola italia pizza - add a side"
                     ]
                 },
                 "picomesa": {
                     displayName: "Pico Mesa",
+                    logoUrl: this.logoBaseUrl + "picomesa.png",
                     stations: [
-                        "pico mesa - byo",
-                        "pico mesa - express"
+                        "pico mesa - express",
+                        "pico mesa - byo"
                     ]
                 },
                 "piripiri": {
                     displayName: "Piri Piri",
+                    logoUrl: this.logoBaseUrl + "piripiri.png",
                     stations: [
-                        "piri piri - byo",
-                        "piri piri - express"
+                        "piri piri - choose a protein",
+                        "piri piri - choose a side",
+                        "piri piri - choose a sauce"
+                    ]
+                },
+                "pulpculture": {
+                    displayName: "Pulp Culture",
+                    logoUrl: this.logoBaseUrl + "pulpculture.png",
+                    stations: [
+                        "pulp culture - daily features",
+                        "pulp culture - smoothies",
+                        "pulp culture - juices",
+                        "pulp culture - agua frescas",
+                        "pulp culture - enhancers"
                     ]
                 },
                 "revolutionnoodle": {
                     displayName: "Revolution Noodle",
+                    logoUrl: this.logoBaseUrl + "revolutionnoodle.png",
                     stations: [
-                        "revolution noodle - byo",
-                        "revolution noodle - express"
+                        "revolution noodle - daily features",
+                        "revolution noodle - add a side",
+                        "revolution noodle - choose your toppings",
+                        "revolution noodle - something extra"
+                    ]
+                },
+                "rhythmandroux": {
+                    displayName: "Rhythm & Roux",
+                    logoUrl: this.logoBaseUrl + "rhythmandroux.png",
+                    stations: [
+                        "rhythm - daily features",
+                        "rhythm - choose your sauce",
+                        "rhythm - choose your sides",
+                        "roux - daily features",
+                        "roux - choose your sides"
                     ]
                 },
                 "roost1996": {
                     displayName: "Roost 1996",
+                    logoUrl: this.logoBaseUrl + "roost1996.png",
                     stations: [
-                        "roost 1996 - by the slice",
-                        "roost 1996 - individual pizza"
+                        "roost 1996 - choose your sandwich",
+                        "roost 1996 - choose your side"
                     ]
                 },
                 "rootsandseeds": {
-                    displayName: "Roots and Seeds",
+                    displayName: "Roots & Seeds",
+                    logoUrl: this.logoBaseUrl + "rootsandseeds.png",
                     stations: [
-                        "roots and seeds - byo",
-                        "roots and seeds - sides"
+                        "roots & seeds - daily features",
+                        "roots & seeds - choose your greens",
+                        "roots & seeds - select your color",
+                        "roots & seeds - add protein",
+                        "roots & seeds - drizzle with dressing",
+                        "roots & seeds - sprinkle with toppings"
                     ]
                 },
                 "soulkitchen": {
                     displayName: "Soul Kitchen",
+                    logoUrl: this.logoBaseUrl + "soulkitchen.png",
                     stations: [
                         "soul kitchen - daily features",
                         "soul kitchen - sides"
@@ -223,15 +602,63 @@ var IMSintegration;
                 },
                 "soup": {
                     displayName: "Soup",
+                    logoUrl: this.logoBaseUrl + "soup.png",
                     stations: [
                         "soup - daily features"
                     ]
                 },
+                "streeteats": {
+                    displayName: "Street Eats",
+                    logoUrl: this.logoBaseUrl + "streeteats.png",
+                    stations: [
+                        "street eats - daily features",
+                        "street eats - add a side",
+                        "street eats - something extra"
+                    ]
+                },
                 "tacocantina": {
                     displayName: "Taco Cantina",
+                    logoUrl: this.logoBaseUrl + "tacocantina.png",
                     stations: [
-                        "taco cantina - express",
-                        "taco cantina - a la carte"
+                        "taco cantina - daily features",
+                        "taco cantina - choose your protein",
+                        "taco cantina - choose your base",
+                        "taco cantina - add your toppings",
+                        "taco cantina - add chips and dip",
+                        "taco cantina - add extra protein",
+                        "taco cantina - add a side"
+                    ]
+                },
+                "tagine": {
+                    displayName: "Tagine",
+                    logoUrl: this.logoBaseUrl + "tagine.png",
+                    stations: [
+                        "tagine - daily features",
+                        "tagine - toppings",
+                        "tagine - something extra"
+                    ]
+                },
+                "thaiandtrue": {
+                    displayName: "Thai & True",
+                    logoUrl: this.logoBaseUrl + "thaiandtrue.png",
+                    stations: [
+                        "thai & true - daily feature",
+                        "thai & true - something extra",
+                        "thai & true - choose your curry",
+                        "thai & true - choose your vegetables",
+                        "thai & true - choose your entree",
+                        "thai & true - choose your toppings",
+                        "thai & true - choose your side"
+                    ]
+                },
+                "turoturo": {
+                    displayName: "Turo Turo",
+                    logoUrl: this.logoBaseUrl + "turoturo.png",
+                    stations: [
+                        "turo turo - daily features",
+                        "turo turo - pick your protein",
+                        "turo turo - choose your side",
+                        "turo turo - something extra"
                     ]
                 }
             };
@@ -247,8 +674,14 @@ var IMSintegration;
 
         BrandManager.prototype.normalizeForMatching = function (text) {
             if (!text) return "";
+
+            var normalizedText = text.toLowerCase();
+            if (typeof normalizedText.normalize === 'function') {
+                normalizedText = normalizedText.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+
             // Remove all special characters and whitespace, keep only alphanumeric
-            return text.toLowerCase().replace(/[^a-z0-9]/g, '');
+            return normalizedText.replace(/[^a-z0-9]/g, '');
         };
 
         BrandManager.prototype.matchesIncludePattern = function (stationName) {
@@ -268,12 +701,12 @@ var IMSintegration;
                         return {
                             matchedStation: brand.stations[i],
                             brandKey: brandKey,
-                            displayName: brand.displayName
+                            displayName: brand.displayName,
+                            stationIndex: i
                         };
                     }
                 }
             }
-            console.log('❌ No match found for:', normalized);
             return null;
         };
 
@@ -295,11 +728,15 @@ var IMSintegration;
                 .replace(/[^a-z0-9]/g, '');
         };
 
-        BrandManager.prototype.generateLogoUrl = function (brandName) {
+        BrandManager.prototype.generateLogoUrl = function (brandName, brandKey) {
             var _this = this;
-            var sanitized = _this.sanitizeBrandForLogo(brandName);
-            var filename = sanitized + '.png';
-            return _this.logoBaseUrl + filename;
+            var config = brandKey ? _this.brandConfig[brandKey] : null;
+
+            if (config && config.logoUrl) {
+                return config.logoUrl;
+            }
+
+            return "";
         };
 
         BrandManager.prototype.analyzeBrands = function (integrationItems) {
@@ -320,6 +757,7 @@ var IMSintegration;
                 var brandKey = matchResult.brandKey;
                 var brandName = matchResult.displayName;
                 var matchedStation = matchResult.matchedStation;
+                var stationIndex = typeof matchResult.stationIndex === "number" ? matchResult.stationIndex : Number.MAX_SAFE_INTEGER;
 
                 // Extract substation name from matched station pattern
                 var extracted = _this.extractBrandAndSubstation(matchedStation);
@@ -329,7 +767,7 @@ var IMSintegration;
                     brandMap[brandKey] = {
                         brandKey: brandKey,
                         displayName: brandName,
-                        logoUrl: _this.generateLogoUrl(brandName),
+                        logoUrl: _this.generateLogoUrl(brandName, brandKey),
                         stations: {},
                         items: []
                     };
@@ -339,9 +777,15 @@ var IMSintegration;
                     brandMap[brandKey].stations[substationName] = {
                         originalName: matchedStation,
                         cleanedName: substationName,
+                        sortIndex: stationIndex,
                         period: item.period,
                         items: []
                     };
+                } else {
+                    brandMap[brandKey].stations[substationName].sortIndex = Math.min(
+                        brandMap[brandKey].stations[substationName].sortIndex,
+                        stationIndex
+                    );
                 }
 
                 brandMap[brandKey].stations[substationName].items.push(item);
@@ -429,7 +873,6 @@ var IMSintegration;
             var menuPageId = '#' + brandKey + '_page';
             var menuPage = $(menuPageId);
 
-            console.log('🔧 showBrandMenu - looking for:', menuPageId, 'found:', menuPage.length);
 
             if (!menuPage.length) {
                 console.log('🔧 Page not found, creating new page');
@@ -503,13 +946,17 @@ var IMSintegration;
             Object.keys(brand.stations).forEach(function (stationKey) {
                 var station = brand.stations[stationKey];
                 var cleanName = station.cleanedName || "Menu";
+                var sortIndex = typeof station.sortIndex === "number" ? station.sortIndex : Number.MAX_SAFE_INTEGER;
                 console.log('🔧 Processing station:', stationKey, '→ cleanName:', cleanName, 'items:', station.items.length);
 
                 if (!stationGroups[cleanName]) {
                     stationGroups[cleanName] = {
                         name: cleanName,
+                        sortIndex: sortIndex,
                         items: []
                     };
+                } else {
+                    stationGroups[cleanName].sortIndex = Math.min(stationGroups[cleanName].sortIndex, sortIndex);
                 }
 
                 stationGroups[cleanName].items = stationGroups[cleanName].items.concat(station.items);
@@ -517,8 +964,19 @@ var IMSintegration;
 
             console.log('🔧 Final stationGroups:', stationGroups);
 
-            Object.keys(stationGroups).forEach(function (groupName) {
-                var group = stationGroups[groupName];
+            var sortedStationGroups = Object.keys(stationGroups)
+                .map(function (groupName) {
+                    return stationGroups[groupName];
+                })
+                .sort(function (a, b) {
+                    if (a.sortIndex !== b.sortIndex) {
+                        return a.sortIndex - b.sortIndex;
+                    }
+                    return a.name.localeCompare(b.name);
+                });
+
+            sortedStationGroups.forEach(function (group) {
+                var groupName = group.name;
 
                 if (group.items.length === 0) {
                     console.log('🔧 Skipping empty group:', groupName);

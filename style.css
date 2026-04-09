@@ -486,6 +486,7 @@ display: flex;
 .name {
     display: inline-block;
     font-family: "BarlowSemiCondensed-Regular";
+    text-transform: capitalize;
     font-size: 52px;
     line-height: 52px;
     text-align: left;
@@ -749,6 +750,7 @@ display: flex;
 
 .modal-title {
     font-family: "Montserrat-ExtraBold", sans-serif;
+    text-transform: capitalize;
     font-size: 32px;
     margin: 0;
     color: #111827;
