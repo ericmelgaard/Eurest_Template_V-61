@@ -17,13 +17,13 @@ body {
     overflow: auto;
 }
 
-/*scaling support*/
 body {
     transform-origin: top left;
 }
 
-
-/*loading styles*/
+/* ==========================================================================
+   Loading styles
+   ========================================================================== */
 .loading {
     display: flex;
     flex-direction: column;
@@ -46,7 +46,16 @@ body {
 }
 
 .loading-wrapper {
-    color: transparent;
+    position: absolute;
+    height: 150px;
+    margin-top: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 32px;
+    font-family: "roboto";
+    color: white;
+    border-radius: 3px;
 }
 
 .loading img {
@@ -131,23 +140,6 @@ p {
     z-index: 1;
 }
 
-.error {
-    height: 50%;
-}
-
-.error-message {
-    display: flex;
-    cursor: pointer;
-    justify-content: space-between;
-    background-color: white;
-    border: 3px solid black;
-    border-radius: 25px;
-    max-width: 50%;
-    padding: 25px;
-    font-size: 28px;
-    line-height: 34px;
-    box-shadow: 25px 10px 25px -10px rgba(0, 0, 0, 0.75);
-}
 
 .connectError {
     padding: 5px 15px 5px 15px;
@@ -188,24 +180,24 @@ p {
 }
 
 /*cursors*/
-.qu {
-    cursor: url(.//logo_32.png), auto;
+/* .qu {
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/qu.png), auto;
 }
 
 .revel {
-    cursor: url(.//revel_32.png), auto;
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/revel.png), auto;
 }
 
 .ims {
-    cursor: url(.//IMS_32.png), auto;
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/wand.png), auto;
 }
 
 .toast {
-    cursor: url(.//toast_32.png), auto;
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/toast.png), auto;
 }
 
 .par {
-    cursor: url(.//PAR-Logo-NB-blue.png), auto;
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/par.png), auto;
 }
 
 .simphony {
@@ -217,12 +209,12 @@ p {
 }
 
 .webtrition {
-    cursor: url(.//webt_32.png), auto;
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/webt.png), auto;
 }
 
 .mealtracker {
-    cursor: url(.//mealtracker_32.png), auto;
-}
+    cursor: url(https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302899/mealtracker.png), auto;
+} */
 
 /* status wrapper */
 
@@ -240,23 +232,6 @@ p {
     z-index: 1000;
 }
 
-/*loading wrapper*/
-
-.loading-wrapper {
-    position: absolute;
-    text-align: center;
-    font-size: 32px;
-    color: rgba(0, 0, 0, 0.87);
-    border-radius: 3px;
-    height: 150px;
-    margin-top: 280px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "roboto";
-    color: white;
-
-}
-
 /*rotate styles.. needs review*/
 .rotate-group {
     overflow: hidden;
@@ -265,8 +240,6 @@ p {
 .target.items-wrapper {
     flex-wrap: nowrap;
 }
-
-.rotation-wrapper {}
 
 .rotate-group {
     flex-direction: column;
@@ -351,31 +324,6 @@ p {
 .options-hidden {
     opacity: 0;
     pointer-events: none;
-}
-
-/* Options button styling */
-.options-button {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 9999px;
-    background-color: rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
-}
-
-.options-button:hover {
-    background-color: rgba(143, 216, 248, 0.9);
-    transform: scale(1.05);
-}
-
-.options-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: rgba(0, 0, 0, 0.7);
 }
 
 /* Dropdown menu styling */
@@ -468,86 +416,3 @@ p {
     }
 }
 
-.information-text {
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 400;
-    padding: 20px;;
-    color: #fafafa;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
-
-/* Navigation Button Styles */
-.nav-btn {
-    position: fixed;
-    z-index: 1000;
-    width: 120px;
-    height: 120px;
-    border: none;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.95);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 0;
-}
-
-.nav-btn:hover {
-    transform: scale(1.1);
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.nav-btn:active {
-    transform: scale(1.05);
-}
-
-.nav-btn svg {
-    width: 60px;
-    height: 60px;
-    color: #333;
-}
-
-.nav-close {
-    left: 20px;
-    display: none;
-}
-
-.nav-back {
-    left: 20px;
-    display: none;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-}
-
-.nav-btn.fade-in {
-    animation: fadeIn 0.3s ease forwards;
-}
-
-.nav-btn.fade-out {
-    animation: fadeOut 0.3s ease forwards;
-}

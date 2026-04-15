@@ -130,10 +130,6 @@ var IMSintegration;
             }
         };
         MenuLayout.prototype.fillDynamic = function (IMSItems, integrationItems) {
-            // This function is for static home page promotional content only
-            // Example: "What's Happening in March" cards, special announcements, etc.
-            // All brand/menu functionality is handled by brandManager.js
-
             console.log("fillDynamic: Ready for static promotional content");
         };
         MenuLayout.prototype.clearMenuItems = function (zone) {
@@ -188,26 +184,7 @@ var IMSintegration;
             this.updateNavigationButtons();
 
             window.scrollTo(0, 0);
-
-            if (this.breakfast_overlay) {
-                $(this.breakfast_overlay).hide();
-            }
-            if (this.tacocantina_overlay) {
-                $(this.tacocantina_overlay).hide();
-            }
-            if (this.bandb_overlay) {
-                $(this.bandb_overlay).hide();
-            }
-            if (this.roost_overlay) {
-                $(this.roost_overlay).hide();
-            }
-            if (this.inspiredkitchen_overlay) {
-                $(this.inspiredkitchen_overlay).hide();
-            }
-            if (this.flame_overlay) {
-                $(this.flame_overlay).hide();
-            }
-
+            
             // Pause inactivity timer when on home screen
             if (typeof InactivityManager !== 'undefined') {
                 InactivityManager.pause();
@@ -444,36 +421,6 @@ var IMSintegration;
                 <span class="desc"><span class="material-icons" style="margin-right: 5px; vertical-align: top;">error</span>No menu found for {{station}}</span>
             </div>
         </div>`;
-        MenuLayout.itemWrapper = `
-        <div class="menu-item-wrapper" data-item-name="{{{name}}}{{comboName}}{{menuItemName}}">
-                <div class="item-wrapper">
-                    <span class="name">
-                        {{{name}}}{{comboName}}{{menuItemName}}<span class="icon-wrapper {{showIcons}}">{{#icons}}<img src="./{{fileName}}" class="nutrition-icon vegetarian" />{{/icons}}
-                        </span>
-                    </span>
-                </div>
-                <div class="desc {{showDescription}}">{{description}}</div>
-                <div class="price-wrapper">
-                    <div class="calories {{showCals}}">{{calories}} cal</div>
-                    <div class="price {{showPrice}}">{{price}}</div>
-                </div>
-        </div>`;
-
-        MenuLayout.itemWrapperInline = `
-        <div class="menu-item-wrapper inline" data-item-name="{{{name}}}{{comboName}}{{menuItemName}}">
-                <div class="item-wrapper">
-                    <span class="name">
-                        {{{name}}}{{comboName}}{{menuItemName}}<span class="icon-wrapper {{showIcons}}">{{#icons}}<img src="./{{fileName}}" class="nutrition-icon vegetarian" />{{/icons}}
-                        </span>
-                    </span>
-                    <div class="price-wrapper">
-                        <div class="calories {{showCals}}">{{calories}} cal</div>
-                        <div class="price {{showPrice}}">{{price}}</div>
-                    </div>
-                </div>
-            <div class="desc {{showDescription}}">{{description}}</div>
-        </div>`;
-
         return MenuLayout;
     })();
     IMSintegration.MenuLayout = MenuLayout;

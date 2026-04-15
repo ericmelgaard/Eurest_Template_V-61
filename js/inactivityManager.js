@@ -9,6 +9,29 @@ const InactivityManager = (function() {
     onWarning: null,
     onReset: null
   };
+  const MODAL_ROOT_ID = 'inactivity-modal-root';
+  const MODAL_TEMPLATE = `
+    <div id="inactivity-warning-modal" class="inactivity-modal">
+      <div class="inactivity-modal-overlay"></div>
+      <div class="inactivity-modal-container">
+        <div class="countdown-circle">
+          <svg width="120" height="120" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" stroke="#1a2332" stroke-width="8" fill="none" />
+            <circle id="countdown-circle-progress" cx="50" cy="50" r="45" stroke="#5B9BD5" stroke-width="8"
+              fill="none" stroke-linecap="round" transform="rotate(-90 50 50)"
+              style="stroke-dasharray: 282.7; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear;" />
+          </svg>
+          <div id="inactivity-countdown" class="countdown-number">{{countdownSeconds}}</div>
+        </div>
+        <h2 class="inactivity-modal-heading">Are you still browsing?</h2>
+        <p class="inactivity-modal-message">You'll be returned to the home screen in <span id="inactivity-countdown-text">{{countdownSeconds}}</span> seconds</p>
+        <div class="inactivity-modal-buttons">
+          <button id="continue-browsing-btn" class="inactivity-btn primary">Continue Browsing</button>
+          <button id="return-home-btn" class="inactivity-btn secondary">Return to Home</button>
+        </div>
+      </div>
+    </div>
+  `;
 
   let config = {};
   let state = 'idle';
@@ -27,6 +50,25 @@ const InactivityManager = (function() {
       return !!config.shouldTrackActivity();
     }
     return true;
+  }
+
+  function ensureModalRoot() {
+    let modalRoot = document.getElementById(MODAL_ROOT_ID);
+
+    if (!modalRoot) {
+      document.body.insertAdjacentHTML('beforeend', '<div id="' + MODAL_ROOT_ID + '"></div>');
+      modalRoot = document.getElementById(MODAL_ROOT_ID);
+    }
+
+    return modalRoot;
+  }
+
+  function renderModal() {
+    const modalRoot = ensureModalRoot();
+    const countdownSeconds = Math.floor(config.countdownDuration / 1000);
+    modalRoot.innerHTML = Mustache.render(MODAL_TEMPLATE, {
+      countdownSeconds: countdownSeconds
+    });
   }
 
   function handleUserActivity() {
@@ -60,12 +102,14 @@ const InactivityManager = (function() {
     unbindActivityEvents();
     config = { ...DEFAULT_CONFIG, ...userConfig };
 
+    renderModal();
+
     modalElement = document.getElementById('inactivity-warning-modal');
     countdownDisplay = document.getElementById('inactivity-countdown');
     circleProgress = document.getElementById('countdown-circle-progress');
 
     if (!modalElement) {
-      console.error('Inactivity warning modal not found in DOM');
+      console.error('Inactivity warning modal could not be rendered');
       return;
     }
 
@@ -79,11 +123,11 @@ const InactivityManager = (function() {
     const homeBtn = document.getElementById('return-home-btn');
 
     if (continueBtn) {
-      continueBtn.addEventListener('click', handleContinueBrowsing);
+      continueBtn.onclick = handleContinueBrowsing;
     }
 
     if (homeBtn) {
-      homeBtn.addEventListener('click', handleReturnHome);
+      homeBtn.onclick = handleReturnHome;
     }
   }
 

@@ -195,9 +195,15 @@ function animateObserver() {
                 if (mutation.type === "attributes" && mutation.attributeName === "trm-playing") {
                     if (trmPlaying.getAttribute("trm-playing") === "false") {
                         menuLayout.trmAnimate(false);
+                        if(isCF){
+                            $(document).hide();
+                        }
                     }
                     if (trmPlaying.getAttribute("trm-playing") === "true") {
                         menuLayout.trmAnimate(true);
+                        if(isCF){
+                            $(document).show();
+                        }
                     }
                 }
             });
@@ -339,42 +345,63 @@ function resetSync() {
     });
 }
 
-function releaseVideos() {
-    $('video').each(function () {
-        $(this).attr('src', '');
-        $(this).find('source').attr('src', ''); //catch nested sources
-        this.load(); // Reload the video element to apply the changes
+function clearAssetRuntimeCache() {
+    var cachePrefix = "wand-asset-cache";
+
+    if (typeof caches === "undefined") {
+        console.warn("Cache Storage API unavailable; skipping runtime cache clear.");
+        return Promise.resolve();
+    }
+
+    return caches.keys().then(function (keys) {
+        var deletions = keys.filter(function (key) {
+            return key.toLowerCase().indexOf(cachePrefix) > -1;
+        }).map(function (key) {
+            console.log("Deleting cache.. " + key);
+            return caches.delete(key);
+        });
+
+        if (deletions.length === 0) {
+            console.log("No matching runtime caches found to delete.");
+        }
+
+        return Promise.all(deletions).then(function (results) {
+            var deletedCount = results.filter(function (result) { return result === true; }).length;
+            console.log("Runtime cache deletion complete. Deleted " + deletedCount + " cache(s).");
+            return results;
+        });
+    }).catch(function (error) {
+        console.warn("Unable to clear Cache Storage:", error);
     });
 }
+
 document.refreshAsset = function () {
+    $("body").toggleClass("blink");
+
     if (leader) {
-        $("body").toggleClass("blink")
         integration.cached_start();
-        setTimeout(function () {
-            $("body").toggleClass("blink")
-        }, 1000)
-    } else {
-        $("body").toggleClass("blink")
-        setTimeout(function () {
-            $("body").toggleClass("blink")
-        }, 1000)
     }
-    return "Simualte refreshAsset() event";
+
+    setTimeout(function () {
+        $("body").toggleClass("blink");
+    }, 1000);
+
+    return "Simulate refreshAsset() event";
 };
 //future add to digital to clear remotely
 //switched to synthetic reload
 document.clearAssetStorage = function () {
-    if (leader) {
-        new Promise(function (resolve, reject) {
-            clearDatabases()
-                .then(resolve)
-                .catch(reject);
-        }).then(function () {
-            integration.init(leader, isUsingIndexedDB)
-        });
-    } else {
-        integration.init(leader, isUsingIndexedDB)
-    }
+    var resetWork = leader
+        ? Promise.all([clearDatabases(), clearAssetRuntimeCache()])
+        : clearAssetRuntimeCache();
+
+    resetWork.then(function () {
+        integration.init(leader, isUsingIndexedDB);
+    }).catch(function (error) {
+        console.warn("Storage reset warning:", error);
+        integration.init(leader, isUsingIndexedDB);
+    });
+
     return "Simulate clearAssetStorage() event";
 };
 //function used by asset to clear storage and ignore TRM or client dependencies
@@ -467,26 +494,6 @@ function clearLocalStorage(resolve) {
     console.log("Local Storage maintenance complete");
     resolve();
 }
-//clean up on exits or closes so new leader can be elected.
-//should I do something more in content forecaster..
-window.addEventListener('beforeunload', function (event) {
-    // Perform actions before the page unloads
-    if (platform === "webos") {
-        releaseVideos();
-    }
-    if (leader) {
-        self.localStorage.removeItem(heartbeatKey);
-    }
-});
-window.addEventListener('unload', function (event) {
-    // Perform actions before iframe is closed or leader exits.
-    if (platform === "webos") {
-        releaseVideos();
-    }
-    if (leader) {
-        self.localStorage.removeItem(heartbeatKey);
-    }
-});
 
 function hideFallback() {
     $(".fallback-wrapper").hide();

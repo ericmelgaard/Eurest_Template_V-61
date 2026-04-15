@@ -13,7 +13,7 @@
 
         init: function () {
             if (!self.frameElement) {
-                return;
+                return "not in client";
             }
 
             if (this.isInitialized) {
@@ -93,7 +93,7 @@
             for (var i = 0; i < url.length - 2; i++) {
                 path = path + url[i] + "/";
             }
-            console.log(path);
+            // console.log(path);
             return path;
         },
 
@@ -190,7 +190,7 @@
                 imageStore.push(imgObj);
             });
 
-            console.log(imageStore);
+            console.log("image store populated with", imageStore.length, "images", imageStore);
             return imageStore;
         },
 

@@ -22,6 +22,7 @@ var mealStation = "";
 var mealPeriod = "";
 var menuType = "";
 var includeRecipes = false;
+var webtritionPageSize = 2000; // page size for paged Webtrition responses
 var showPrice = true;
 var showProtein = false;
 var showDescription = true;
@@ -49,11 +50,11 @@ var Store_Key = "7842";
 var Zone_ID = "";
 var Duration = "";
 var Partner_API = "webtrition";
-var Brand = "";
-var Establishment = "";
+var Brand = "71985";
+var Establishment = "72099";
 var apiKey = "";
 //yyyy-mm-dd ex.2026-02-23
-var dateToRequest = "2026-04-06";
+var dateToRequest = "";
 var devSiteKeys = ["6091", "4873", "4907", "5448", "4756", "6820"];
 //end development & preview values
 //global scope variables
@@ -74,6 +75,79 @@ var menuLayout = null;
 var app = null;
 var imageStore = [];
 var shouldObserve = checkSiblings(); //exclude from leader election process if better sibling exists.
+
+//enable Microsoft Clarity tracking when not in development/preview mode
+//grab Microsoft Clarity script from https://www.clarity.ms
+(function registerClarityWhenNotDev() {
+    function loadClarity() {
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "w82br31nme");
+    }
+
+    window.addEventListener("load", function () {
+        var isDevMode = Boolean(window.development) || Boolean(window.isPreview) || Boolean(window.isCF);
+
+        if (isDevMode) {
+            console.info("Clarity disabled in development/preview/CF mode.");
+            return;
+        }
+
+        loadClarity();
+    });
+})();
+
+(function registerImageServiceWorker() {
+    var cachePrefix = "wand-asset-cache";
+
+    function clearImageCaches() {
+        if (typeof caches === "undefined") {
+            return Promise.resolve();
+        }
+
+        return caches.keys().then(function (keys) {
+            var deletions = keys.filter(function (key) {
+                return key.indexOf(cachePrefix) === 0;
+            }).map(function (key) {
+                return caches.delete(key);
+            });
+
+            return Promise.all(deletions);
+        });
+    }
+
+    function unregisterServiceWorkers() {
+        return navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            var removals = registrations.map(function (registration) {
+                return registration.unregister();
+            });
+
+            return Promise.all(removals);
+        });
+    }
+
+    if (!("serviceWorker" in navigator)) {
+        console.warn("Service workers are not supported in this runtime.");
+        return;
+    }
+
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./sw-images.js").then(function (registration) {
+            console.info("Image service worker registered with scope:", registration.scope);
+        }).catch(function (error) {
+            if (!window.isSecureContext) {
+                console.warn("Image service worker blocked: this page is not in a secure context (HTTPS or localhost).", error);
+                return;
+            }
+            console.warn("Image service worker registration failed:", error);
+        });
+    });
+})();
 //global scope functions
 $(document).ready(function () {
     if (client && !development) {
@@ -140,7 +214,7 @@ $(document).ready(function () {
     if (development && !client) {
         AssetConfiguration.leader = true;
         setupOptionsMenu();
-        console.log(AssetConfiguration);
+        console.log("initializing application with configuration", AssetConfiguration);
         leader = true;
         ready(true);
         return;

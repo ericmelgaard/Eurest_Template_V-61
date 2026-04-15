@@ -68,6 +68,10 @@ var IMSintegration;
             this.API = "";
             this.business_unit = "";
             this.location = "";
+            this.webtritionPageSize = typeof webtritionPageSize !== "undefined" && parseInt(webtritionPageSize, 10) > 0
+                ? parseInt(webtritionPageSize, 10)
+                : 2000;
+            this.webtritionRequestQueue = Promise.resolve();
             this.imsItemsUpdateInterval =
                 Math.floor(Math.random() * (this.IMSmaxUpdate - this.IMSminUpdate + 1)) + this.IMSminUpdate;
             this.imsSettingsUpdateInterval =
@@ -428,7 +432,7 @@ var IMSintegration;
             _this.app.init(_this.API, false);
             _this.getSettings();
             _this.getIMSData(false);
-            if (_this.API != "ims" || _this.API != "trm") {
+            if (_this.API != "ims" && _this.API != "trm") {
                 _this.getIntegrationData("patch");
             }
         };
@@ -636,6 +640,81 @@ var IMSintegration;
                 }
             });
         };
+        Integration.prototype.getPagedWebtritionData = function (requestOptions) {
+            var _this = this;
+            var pageSize = parseInt(_this.webtritionPageSize, 10) > 0 ? parseInt(_this.webtritionPageSize, 10) : 2000;
+            var endpoint = requestOptions && requestOptions.url ? requestOptions.url : "";
+            var baseBody = requestOptions && requestOptions.body ? requestOptions.body : {};
+            function getPage(offset) {
+                return new Promise(function (resolve, reject) {
+                    var payload = {
+                        sapCode: baseBody.sapCode,
+                        venue: baseBody.venue,
+                        menuDate: baseBody.menuDate,
+                        days: baseBody.days,
+                        includeNutrients: baseBody.includeNutrients,
+                        channel: baseBody.channel,
+                        offset: offset,
+                        limit: pageSize
+                    };
+                    Object.keys(payload).forEach(function (key) {
+                        if (payload[key] === undefined || payload[key] === null || payload[key] === "") {
+                            delete payload[key];
+                        }
+                    });
+                    $.ajax({
+                        url: endpoint,
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify(payload)
+                    }).done(function (data, status, xhr) {
+                        resolve({
+                            data: data,
+                            statusCode: xhr.status
+                        });
+                    }).fail(function (xhr, status, error) {
+                        reject({
+                            xhr: xhr,
+                            status: status,
+                            error: error
+                        });
+                    });
+                });
+            }
+            return getPage(1).then(function (firstPage) {
+                var firstData = firstPage.data || {};
+                var allItems = firstData.menuItems ? firstData.menuItems.slice() : [];
+                var totalItems = parseInt(firstData.totalItems, 10) || allItems.length;
+                if (firstPage.statusCode !== 200 || totalItems <= allItems.length) {
+                    return {
+                        data: firstData,
+                        statusCode: firstPage.statusCode
+                    };
+                }
+                var requests = [];
+                var nextPage = (parseInt(firstData.offset, 10) || 1) + 1;
+                var totalPages = Math.ceil(totalItems / pageSize);
+                for (var page = nextPage; page <= totalPages; page++) {
+                    requests.push(getPage(page));
+                }
+                return Promise.all(requests).then(function (pages) {
+                    pages.forEach(function (page) {
+                        var pageItems = page.data && page.data.menuItems ? page.data.menuItems : [];
+                        allItems = allItems.concat(pageItems);
+                    });
+                    firstData.menuItems = allItems;
+                    firstData.count = allItems.length;
+                    firstData.limit = pageSize;
+                    firstData.offset = 1;
+                    firstData.totalItems = totalItems;
+                    return {
+                        data: firstData,
+                        statusCode: firstPage.statusCode
+                    };
+                });
+            });
+        };
         Integration.prototype.addIMSData = function (data) {
             //format to store in indexedDB
             var _this = this;
@@ -794,18 +873,17 @@ var IMSintegration;
                 url = "https://appjel-" + _this.wand + "/integration" + "?id=" + _this.establishment + "&startDate=" + startDate;
             }
             if (_this.API === "webtrition") {
-                var url = "https://" +
-                    _this.wand +
-                    "/services/webtrition/client/v3/wds" +
-                    "?SapCode=" +
-                    _this.brand +
-                    "&Venue=" +
-                    _this.establishment +
-                    "&mealPeriod=" +
-                    "&MenuDate=" +
-                    currentTime() +
-                    "&SourceSystem=1" +
-                    "&Days=3&IncludeNutrients=true";
+                url = {
+                    url: "https://" + _this.wand + "/services/webtrition/client/wds",
+                    body: {
+                        sapCode: _this.brand,
+                        venue: _this.establishment,
+                        menuDate: currentTime(),
+                        days: 3,
+                        includeNutrients: true,
+                        channel: "stable"
+                    }
+                };
             }
             if (_this.API === "bonappetit") {
                 url = "https://" + _this.wand + "/integrations/" + _this.API + "?campus=" + _this.brand + "&cafe=" + _this.establishment + "&menuDate=" + currentTime();
@@ -814,24 +892,34 @@ var IMSintegration;
                 console.warn("No integration API configured for " + _this.API);
                 return;
             }
-            $.get(url, function (data, status, xhr) {
-                var statusCode = xhr.status;
-                var message = data;
-                if (statusCode === 204) {
-                    _this.integrationUpdateInterval = _this.fallbackInterval;
-                    integration.showConnect(true, "forestgreen", _this.API, "Failed to sync Integration data", "error");
-                }
-                if (statusCode === 200) {
+            var scheduleNextSync = function () {
+                _this.Integration_TimeOuts.forEach(function (each) {
+                    clearTimeout(each);
+                });
+                _this.Integration_TimeOuts = [];
+                _this.Integration_TimeOuts.push(setTimeout(function () {
+                    _this.getIntegrationData();
+                }, _this.integrationUpdateInterval));
+            };
+            var handleSuccess = function (statusCode, message) {
+                var hasError = !!(message && message.hasError);
+
+                if (statusCode === 200 && !hasError) {
                     integration.showConnect(false, "forestgreen", _this.API);
                     _this.setSync(_this.API);
                     _this.addIntegrationData(message, action);
                     _this.attempts = 0;
+                    scheduleNextSync();
+                    return;
                 }
-                _this.Integration_TimeOuts.push(setTimeout(function () {
-                    _this.getIntegrationData();
-                }, _this.integrationUpdateInterval));
-            })
-                .fail(function () {
+
+                if (statusCode === 204) {
+                    _this.integrationUpdateInterval = _this.fallbackInterval;
+                }
+
+                handleFailure();
+            };
+            var handleFailure = function () {
                 console.warn("Could not load integration data!");
                 _this.integrationUpdateInterval = _this.attempts > 1 ? _this.integrationUpdateInterval : _this.fallbackInterval;
                 integration.showConnect(true, "forestgreen", _this.API, "Failed to sync Integration data", "error");
@@ -844,9 +932,31 @@ var IMSintegration;
                         _this.attempts = 0;
                     }
                 }
-                _this.Integration_TimeOuts.push(setTimeout(function () {
-                    _this.getIntegrationData();
-                }, _this.integrationUpdateInterval));
+                scheduleNextSync();
+            };
+            if (_this.API === "webtrition") {
+                _this.webtritionRequestQueue = _this.webtritionRequestQueue
+                    .catch(function () {
+                    return null;
+                })
+                    .then(function () {
+                    return _this.getPagedWebtritionData(url);
+                })
+                    .then(function (response) {
+                    handleSuccess(response.statusCode, response.data);
+                    return response;
+                })
+                    .catch(function (error) {
+                    handleFailure();
+                    throw error;
+                });
+                return;
+            }
+            $.get(url, function (data, status, xhr) {
+                handleSuccess(xhr.status, data);
+            })
+                .fail(function () {
+                handleFailure();
             });
         };
         Integration.prototype.addIntegrationData = function (data, action) {
@@ -904,7 +1014,7 @@ var IMSintegration;
             }
             if (_this.API === "webtrition") {
                 action = "update";
-                products = data.menuItems ? _this.formatWebtrition(data.menuItems) : {};
+                products = data.menuItems ? _this.formatWebtrition(data.menuItems) : {};  
             }
             if (_this.API === "bonappetit") {
                 action = "update";

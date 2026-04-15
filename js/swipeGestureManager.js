@@ -156,6 +156,10 @@ const SwipeGestureManager = (function() {
   function triggerGoHome() {
     console.log('Swipe left detected - returning home');
 
+    if (typeof closeNutritionModal === 'function') {
+      closeNutritionModal();
+    }
+
     if (typeof goHome === 'function') {
       const mockEvent = {
         stopPropagation: function() {}

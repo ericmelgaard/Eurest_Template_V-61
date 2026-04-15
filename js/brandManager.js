@@ -509,14 +509,14 @@ var IMSintegration;
                     displayName: "Piccola Italia",
                     logoUrl: this.logoBaseUrl + "piccolaitalia.png",
                     stations: [
+                        "piccola italia pizza - daily features",
                         "piccola italia pasta - daily features",
+                        "piccola italia pizza - personal pizza",
+                        "piccola italia pizza - by the slice",
                         "piccola italia pasta - choose your base",
                         "piccola italia pasta - choose your protein",
                         "piccola italia pasta - choose your toppings",
                         "piccola italia pasta - add a side",
-                        "piccola italia pizza - daily features",
-                        "piccola italia pizza - personal pizza",
-                        "piccola italia pizza - by the slice",
                         "piccola italia pizza - choose your base",
                         "piccola italia pizza - choose your protein",
                         "piccola italia pizza - choose your toppings",
@@ -688,8 +688,6 @@ var IMSintegration;
             var _this = this;
             var sanitized = _this.sanitizeStationName(stationName);
             var normalized = _this.normalizeForMatching(sanitized);
-
-            console.log('🔍 Matching station:', stationName, '→ normalized:', normalized);
 
             // Search through all brand configs to find matching station
             for (var brandKey in _this.brandConfig) {
@@ -873,9 +871,7 @@ var IMSintegration;
 
 
             if (!menuPage.length) {
-                console.log('🔧 Page not found, creating new page');
                 menuPage = _this.createDynamicMenuPage(brandKey);
-                console.log('🔧 Created page:', menuPage.length, 'HTML:', menuPage[0]);
             }
 
             _this.populateMenuPage(brand, menuPage);
@@ -936,7 +932,6 @@ var IMSintegration;
             });
 
             var sectionWrapper = menuPage.find('.section-wrapper');
-            console.log('🔧 sectionWrapper found:', sectionWrapper.length);
             sectionWrapper.empty();
 
             var stationGroups = {};
@@ -959,8 +954,6 @@ var IMSintegration;
                 stationGroups[cleanName].items = stationGroups[cleanName].items.concat(station.items);
             });
 
-            console.log('🔧 Final stationGroups:', stationGroups);
-
             var sortedStationGroups = Object.keys(stationGroups)
                 .map(function (groupName) {
                     return stationGroups[groupName];
@@ -980,8 +973,6 @@ var IMSintegration;
                     return;
                 }
 
-                console.log('🔧 Creating section:', groupName, 'with', group.items.length, 'items');
-
                 var featureWrapper = $('<div>').addClass('feature-wrapper');
 
                 var sectionTitle = $('<div>')
@@ -1000,10 +991,7 @@ var IMSintegration;
                 featureWrapper.append(sectionTitle);
                 featureWrapper.append(itemsWrapper);
                 sectionWrapper.append(featureWrapper);
-                console.log('🔧 Section appended:', groupName);
             });
-
-            console.log('🔧 populateMenuPage complete. Total sections in wrapper:', sectionWrapper.children('.feature-wrapper').length);
 
             _this.handleIconOrphans(menuPage);
         };
@@ -1073,7 +1061,6 @@ var IMSintegration;
 
         BrandManager.prototype.init = function (integrationItems, resetTimerCallback) {
             var _this = this;
-            console.log(integrationItems);
             _this.analyzeBrands(integrationItems);
             _this.renderBrandCards('#weekly_menu_page .brand-list');
             _this.attachBrandHandlers(resetTimerCallback);
@@ -1085,7 +1072,7 @@ var IMSintegration;
         <div class="menu-item-wrapper">
                 <div class="item-wrapper">
                     <span class="name">
-                        {{{name}}}{{comboName}}{{menuItemName}}<span class="icon-wrapper {{showIcons}}">{{#icons}}<img src="./{{fileName}}" class="nutrition-icon vegetarian" />{{/icons}}
+                        {{{name}}}{{comboName}}{{menuItemName}}<span class="icon-wrapper {{showIcons}}">{{#icons}}<img src="{{fileURL}}" data-fallback-url="{{url}}" class="nutrition-icon vegetarian nutrition-icon-fallback-url" onerror="if (this.dataset.fallbackTried) { this.style.display = 'none'; return; } var fallbackUrl = this.dataset.fallbackUrl; if (fallbackUrl) { this.dataset.fallbackTried = '1'; this.src = fallbackUrl; } else { this.style.display = 'none'; }" />{{/icons}}
                         </span>
                     </span>
                 </div>

@@ -378,6 +378,7 @@ var IMSintegration;
                 each.showProtein = !showProtein ? "hide" : each.showProtein;
                 each.showDescription = !showDescription ? "hide" : each.showDescription;
                 if (each.icons) {
+                    var iconTemplateBaseUrl_1 = "https://trm.wandcorp.com/cms_mediafiles/DIGITAL_ASSETS_NX01/302524/";
                     each.icons.forEach(function (eachIcon) {
                         if (eachIcon.name.includes("Vegetarian"))
                             vegetarian = true;
@@ -385,6 +386,7 @@ var IMSintegration;
                             vegan = true;
                         var sanitizedName = eachIcon.name.replace(/\s+/g, '').toLowerCase().replace(/[^a-z0-9_-]/g, '');
                         eachIcon.fileName = "media/icon_".concat(sanitizedName, ".png");
+                        eachIcon.fileURL = "".concat(iconTemplateBaseUrl_1, "icon_").concat(sanitizedName, ".png");
                         eachIcon.name = eachIcon.name.replace(/\s+/g, '').toLowerCase();
                     });
                     each.icons.forEach(function (eachIcon, idx) {
