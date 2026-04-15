@@ -2,7 +2,7 @@
 //Publisher: Wand Digital
 //Date: 09.09.2025
 //asset version
-var assetVersion = 61.0;
+var assetVersion = 63.0;
 //database version
 var version = 60;
 //settings config
