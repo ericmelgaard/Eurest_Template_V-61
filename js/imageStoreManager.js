@@ -1,9 +1,9 @@
 "use strict";
 
 (function (window) {
-    var ImageStoreManager = {
+    const ImageStoreManager = {
         // Template developers can edit this function to map imageStore data into the DOM.
-        imageInjector: function () {
+        imageInjector() {
             this.applyImageByName("calendar", "#card-happening", "#happening_page .cms-image img");
             this.applyImageByName("connect", "#card-connectwithus", "#connectwithus_page .cms-image img");
             this.applyImageByName("vote", "#card-vote", "#vote_page .cms-image img");
@@ -11,7 +11,7 @@
             this.applyImageByName("upcycled", "#card-foodwithpurpose", "#foodwithpurpose_page .cms-image img");
         },
 
-        init: function () {
+        init() {
             if (!self.frameElement) {
                 return "not in client";
             }
@@ -20,8 +20,8 @@
                 return;
             }
 
-            var parentEle = $(self.frameElement).parent();
-            var parentContainer = parentEle && parentEle[0] ? parentEle[0].parentElement : null;
+            const parentEle = $(self.frameElement).parent();
+            const parentContainer = parentEle && parentEle[0] ? parentEle[0].parentElement : null;
 
             this.isInitialized = true;
             this.parentEle = parentEle;
@@ -43,14 +43,14 @@
             this.observe();
         },
 
-        runImageInjector: function () {
+        runImageInjector() {
             if (typeof this.imageInjector === "function") {
                 this.imageInjector();
             }
         },
 
-        applyImageByName: function (nameFragment, cardSelector, imageSelector) {
-            var matchedImages = imageStore.filter(function (item) {
+        applyImageByName(nameFragment, cardSelector, imageSelector) {
+            const matchedImages = imageStore.filter((item) => {
                 return item.fileName.toLowerCase().indexOf(nameFragment.toLowerCase()) >= 0 && item.fileType === "image";
             });
 
@@ -64,15 +64,14 @@
             $(cardSelector).hide();
         },
 
-        observe: function () {
-            var _this = this;
-            var observerConfig = {
+        observe() {
+            const observerConfig = {
                 childList: true,
                 subtree: false
             };
 
-            this.imageStoreObserver = new MutationObserver(function (mutationsList) {
-                var hasStructuralChange = mutationsList.some(function (mutation) {
+            this.imageStoreObserver = new MutationObserver((mutationsList) => {
+                const hasStructuralChange = mutationsList.some((mutation) => {
                     return mutation.type === "childList" && (mutation.addedNodes.length > 0 || mutation.removedNodes.length > 0);
                 });
 
@@ -80,24 +79,24 @@
                     return;
                 }
 
-                _this.lastMutationAt = Date.now();
-                _this.hasPendingChanges = true;
-                _this.scheduleStableRebuild();
+                this.lastMutationAt = Date.now();
+                this.hasPendingChanges = true;
+                this.scheduleStableRebuild();
             });
 
             this.imageStoreObserver.observe(this.parentContainer, observerConfig);
         },
 
-        platformPath: function (url) {
-            var path = "";
-            for (var i = 0; i < url.length - 2; i++) {
+        platformPath(url) {
+            let path = "";
+            for (let i = 0; i < url.length - 2; i++) {
                 path = path + url[i] + "/";
             }
             // console.log(path);
             return path;
         },
 
-        normalizeImageURL: function (imageURL) {
+        normalizeImageURL(imageURL) {
             if (!imageURL) {
                 return "";
             }
@@ -110,33 +109,32 @@
             return imageURL;
         },
 
-        getAssetIdFromURL: function (imageURL) {
+        getAssetIdFromURL(imageURL) {
             if (!imageURL) {
                 return "";
             }
-            var imageParts = imageURL.split("/").filter(Boolean);
+            const imageParts = imageURL.split("/").filter(Boolean);
             return imageParts.length >= 2 ? imageParts[imageParts.length - 2] : "";
         },
 
-        getAssetZoneId: function () {
+        getAssetZoneId() {
             if (typeof AssetConfiguration !== "undefined" && AssetConfiguration && AssetConfiguration.AZid) {
                 return AssetConfiguration.AZid;
             }
             return null;
         },
 
-        collectSiblingImages: function () {
-            var _this = this;
-            var siblingImages = [];
-            var siblingEles = $(this.parentEle).siblings().get();
+        collectSiblingImages() {
+            const siblingImages = [];
+            const siblingEles = $(this.parentEle).siblings().get();
 
-            siblingEles.forEach(function (each) {
+            siblingEles.forEach((each) => {
                 if ($(each).children().length !== 1) {
                     return;
                 }
 
-                var childSrc = $(each).children(false).attr("src");
-                var imageURL = _this.normalizeImageURL(childSrc);
+                const childSrc = $(each).children(false).attr("src");
+                const imageURL = this.normalizeImageURL(childSrc);
                 if (!imageURL) {
                     return;
                 }
@@ -151,35 +149,34 @@
             return siblingImages;
         },
 
-        rebuildImageStore: function () {
-            var _this = this;
-            var images = this.collectSiblingImages();
+        rebuildImageStore() {
+            const images = this.collectSiblingImages();
             if (!Array.isArray(imageStore)) {
                 imageStore = [];
             }
             imageStore.length = 0;
 
-            images.forEach(function (each) {
-                var imageParts = each.imageURL.split("/");
-                var lastSegment = imageParts[imageParts.length - 1] || "";
-                var extensionParts = lastSegment.split(".");
-                var fileExtension = extensionParts.length > 1 ? extensionParts[extensionParts.length - 1] : "";
-                var videoExtensions = ["mp4", "webm", "ogg", "avi", "mov", "wmv", "flv", "m4v"];
-                var imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp", "tiff"];
+            images.forEach((each) => {
+                const imageParts = each.imageURL.split("/");
+                const lastSegment = imageParts[imageParts.length - 1] || "";
+                const extensionParts = lastSegment.split(".");
+                const fileExtension = extensionParts.length > 1 ? extensionParts[extensionParts.length - 1] : "";
+                const videoExtensions = ["mp4", "webm", "ogg", "avi", "mov", "wmv", "flv", "m4v"];
+                const imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp", "tiff"];
 
-                var fileType = "unknown";
+                let fileType = "unknown";
                 if (videoExtensions.includes(fileExtension.toLowerCase())) {
                     fileType = "video";
                 } else if (imageExtensions.includes(fileExtension.toLowerCase())) {
                     fileType = "image";
                 }
 
-                var assetId = _this.getAssetIdFromURL(each.imageURL);
-                var imgObj = {
+                const assetId = this.getAssetIdFromURL(each.imageURL);
+                const imgObj = {
                     fullPath: each.imageURL,
                     assetId: assetId,
                     imagePath: assetId && lastSegment ? assetId + "/" + lastSegment : lastSegment,
-                    platformPath: _this.platformPath(imageParts),
+                    platformPath: this.platformPath(imageParts),
                     fileName: lastSegment.split(".")[0],
                     fileExtension: fileExtension,
                     fileType: fileType,
@@ -194,7 +191,7 @@
             return imageStore;
         },
 
-        dispatchImageStoreUpdated: function () {
+        dispatchImageStoreUpdated() {
             window.dispatchEvent(new CustomEvent("wand:imageStoreUpdated", {
                 detail: {
                     assetZoneId: this.getAssetZoneId(),
@@ -204,39 +201,37 @@
             }));
         },
 
-        scheduleStableRebuild: function () {
-            var _this = this;
+        scheduleStableRebuild() {
             clearTimeout(this.rebuildTimer);
-            this.rebuildTimer = setTimeout(function () {
-                _this.performStableRebuild();
+            this.rebuildTimer = setTimeout(() => {
+                this.performStableRebuild();
             }, this.QUIET_WINDOW_MS);
         },
 
-        performStableRebuild: function () {
-            var _this = this;
+        performStableRebuild() {
             if (this.rebuildInProgress) {
                 this.hasPendingChanges = true;
                 return;
             }
             this.rebuildInProgress = true;
 
-            var defer = window.requestAnimationFrame || function (cb) {
+            const defer = window.requestAnimationFrame || function (cb) {
                 setTimeout(cb, 0);
             };
 
-            defer(function () {
-                _this.rebuildImageStore();
-                _this.rebuildInProgress = false;
+            defer(() => {
+                this.rebuildImageStore();
+                this.rebuildInProgress = false;
 
-                var quietFor = Date.now() - _this.lastMutationAt;
-                if (_this.hasPendingChanges || quietFor < _this.QUIET_WINDOW_MS) {
-                    _this.hasPendingChanges = false;
-                    _this.scheduleStableRebuild();
+                const quietFor = Date.now() - this.lastMutationAt;
+                if (this.hasPendingChanges || quietFor < this.QUIET_WINDOW_MS) {
+                    this.hasPendingChanges = false;
+                    this.scheduleStableRebuild();
                     return;
                 }
 
-                _this.runImageInjector();
-                _this.dispatchImageStoreUpdated();
+                this.runImageInjector();
+                this.dispatchImageStoreUpdated();
             });
         }
     };
